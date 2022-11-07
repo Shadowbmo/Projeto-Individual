@@ -1,0 +1,111 @@
+.body_do_carrosel{
+    border-bottom-left-radius: 103px;
+    height: 20vh;
+}
+
+.mudanca_de_cor{
+    background-color: #000407;
+    height: 80vh;
+    border-bottom-left-radius: 140px;
+}
+
+.mudanca_de_cor2{
+    background-color: aqua;
+}
+
+.carrosel {
+    margin: 0 auto;
+    width: 800px;
+    height: 400px;
+    overflow: hidden;
+    border: 2px solid #005B92;
+}
+
+.containerCarrosel {
+    width: 400%;
+    height: 400px;
+    display: flex;
+}
+
+.containerCarrosel input {
+    display: none;
+}
+
+.imagen {
+    width: 25%;
+    position: relative;
+}
+
+.imagen img {
+    width: 800px;
+    height: 100%;
+}
+
+.navegarManualmente {
+    position: absolute;
+    width: 800px;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+.botaoManual {
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    margin-left: 30px;
+}
+
+.botaoManual:hover {
+    background-color:#005B92;
+}
+
+#botao1:checked~.primeira {
+    margin-left: 0;
+}
+
+#botao2:checked~.primeira {
+    margin-left: -25%;
+}
+
+#botao3:checked~.primeira {
+    margin-left: -50%;
+}
+
+#botao4:checked~.primeira {
+    margin-left: -75%;
+}
+
+.navegacaoAutomatica {
+display: flex;
+}
+
+.navegacaoAutomatica div{
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    margin-left: 30px;
+}
+
+#botao1:checked ~ .navegacaoAutomatica .botaoAutomatico1{
+    background-color: white;
+
+}
+
+#botao2:checked ~ .navegacaoAutomatica .botaoAutomatico2{
+    background-color: white;
+    
+}
+
+#botao3:checked ~ .navegacaoAutomatica .botaoAutomatico3{
+    background-color: white;
+    
+}
+#botao4:checked ~ .navegacaoAutomatica .botaoAutomatico4{
+    background-color: white;
+    
+}

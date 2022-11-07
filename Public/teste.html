@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./teste.css">
+    <link rel="stylesheet" href="../CSS/teste.css">
 </head>
+
 <body>
     <div class="carrosel">
         <div class="containerCarrosel" id="img">
             <!-- botão do carrosel -->
-            <input type="radio" name="botaoPosicaoAtual" id="botao1">
-            <input type="radio" name="botaoPosicaoAtual" id="botao2">
-            <input type="radio" name="botaoPosicaoAtual" id="botao3">
-            <input type="radio" name="botaoPosicaoAtual" id="botao4">
+            <input type="radio" id="botao1">
+            <input type="radio" id="botao2">
+            <input type="radio" id="botao3">
+            <input type="radio" id="botao4">
             <!-- fim dos botãos -->
 
             <!-- imagens  -->
-            <div class="imagen 1">   
-                <img src="./img/togaTrello-removebg-preview.png">
+            <div class="imagen primeira">
+                <img src="../img/icon.jpg">
             </div>
-            <div class="imagen">   
-                <img src="./img/togaTrello-removebg-preview.png">
+            <div class="imagen">
+                <img src="../img/logo.webp">
             </div>
-            <div class="imagen">   
-                <img src="./img/togaTrello-removebg-preview.png">
+            <div class="imagen">
+                <img src="../img/togaTrello-removebg-preview.png">
             </div>
-            <div class="imagen">   
-                <img src="./img/togaTrello-removebg-preview.png">
+            <div class="imagen">
+                <img src="../img/togaTrello.jpg">
             </div>
             <!-- fim das imagens  -->
 
+            <!-- navegação automatica -->
+            <div class="navegacaoAutomatica">
+                <div class="botaoAutomatico1"></div>
+                <div class="botaoAutomatico2"></div>
+                <div class="botaoAutomatico3"></div>
+                <div class="botaoAutomatico4"></div>
+            </div>
         </div>
 
         <!-- botãos para navegar manualmente -->
@@ -43,7 +52,8 @@
         </div>
 
 
-
+        <link rel="stylesheet" href="../Js/teste.js">
     </div>
 </body>
+
 </html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/index2.css">
+    <link rel="stylesheet" href="../CSS/carrosel.css">
+    <link rel="stylesheet" href="../Js/teste.js">
+</head>
+
+<body>
+
+    <!-- header e imagem do fundo -->
+    <div class="imagem_do_inicio" id="imagem_do_inicio">
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <li><a href="#">LOGO</a></li>
+                </div>
+                <div class="itens">
+                    <li><a href="#" class="item">Inicio</a></li>
+                    <li><a href="#">Personagens</a> </li>
+                </div>
+                <div class="botaos">
+                    <li><a href="#"><button>Cadastro</button></a></li>
+                    <li><a href="#"><button>Entrar</button></a></li>
+                </div>
+                </ul>
+            </div>
+        </header>
+
+        <!-- frase com raio de fundo -->
+        <div class="container_toga">
+            <div class="container_inicial">
+                <div class="container_nome">
+                    <h1 class="nome_himiko_toga" id="h1_nome_personagem">
+                        Himiko Toga
+                    </h1>
+                </div>
+            </div>
+            <div class="container_frase" id="container_frase">
+                <h1 id="frase1">
+                    "é natural querer ser como aquele que você ama, ao ponto de se tornar literalmente essa pessoa"
+                </h1>
+            </div>
+            <div class="container_frase" id="container_frase2">
+                <h1 id="frase2">
+                    "Eu quero viver, me apaixonar e morrer como todo mundo, quero continuar amando
+                    mais."
+                </h1>
+            </div>
+            <div class="botao">
+                <div class="">
+                    <li>
+                        <a href="#">
+                            <button onclick="todoroki()">
+                                butonzinho
+                            </button>
+                        </a>
+                    </li>
+                </div>
+            </div>
+            <!-- quebra de linha  -->
+            <div class="wave">
+                <img src="../img/wave.png" alt="">
+            </div>
+        </div>
+        
+    </div>
+    <div class="container_antes_do_carrosel">
+        <div class="frase_maior">
+            <h2>Lorem ipsum dolor sit ame</h2>
+        </div>
+
+        <div class="frase_menor">
+            <div> Lorem ipsum dolor sit amet. </div>
+            <div> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, temporibus? </div>
+            <div>Lorem ipsum dolor sit amet consectetur.</div>
+        </div>
+    </div>
+    <div class="espaco">
+    </div>
+    <div class="mudanca_de_cor2">
+        <div class="mudanca_de_cor">
+    
+    
+            <!-- inicio do carrosel  -->
+            <div class="body_do_carrosel">
+                <div class="carrosel">
+                    <div class="containerCarrosel" id="img">
+                        <!-- botão do carrosel -->
+                        <input type="radio" id="botao1">
+                        <input type="radio" id="botao2">
+                        <input type="radio" id="botao3">
+                        <input type="radio" id="botao4">
+                        <!-- fim dos botãos -->
+        
+                        <!-- imagens  -->
+                        <div class="imagen primeira">
+                            <img src="../img/himikotogacarrousel2.jpg">
+                        </div>
+                        <div class="imagen">
+                            <img src="../img/togagif.gif">
+                        </div>
+                        <div class="imagen">
+                            <img src="../img/togaTrello-removebg-preview.png">
+                        </div>
+                        <div class="imagen">
+                            <img src="../img/togaTrello.jpg">
+                        </div>
+                        <!-- fim das imagens  -->
+        
+                        <!-- navegação automatica -->
+                        <div class="navegacaoAutomatica">
+                            <div class="botaoAutomatico1"></div>
+                            <div class="botaoAutomatico2"></div>
+                            <div class="botaoAutomatico3"></div>
+                            <div class="botaoAutomatico4"></div>
+                        </div>
+                    </div>
+        
+                    <!-- botãos para navegar manualmente -->
+                    <div class="navegarManualmente">
+                        <label for="botao1" class="botaoManual"></label>
+                        <label for="botao2" class="botaoManual"></label>
+                        <label for="botao3" class="botaoManual"></label>
+                        <label for="botao4" class="botaoManual"></label>
+                    </div>
+        
+
+                  
+                </div>
+            </div>
+        </div>
+        <div class="container_personagem">
+    
+        </div>
+
+        
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    function todoroki () {
+        h1_nome_personagem.innerHTML = 'todoroki';
+        imagem_do_inicio.classList = 'imagem_do_inicioTodoroki';
+        frase1.innerHTML = `"Nunca se esqueça de quem você quer se tornar."`
+        frase2.innerHTML = `"Se você vai confiar apenas nas palavras, então é melhor que elas sejam incrivelmente poderosas."`
+
+
+    }
+
+</script>

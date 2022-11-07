@@ -160,14 +160,22 @@ Imagem da toguro
 section {
     margin-top: 20px;
     display: flex;
+    
 }
-
+ .containerDoInicio{
+    background-image: url(../img/fotoDoInicio.gif);
+    width: 100%;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 section .container-incio-do-site-toga {
     display: flex;
 }
 
 section .container-incio-do-site-toga .imagem_toga {
-    background-image: url(./img/togaTrello-removebg-preview.png);
+    background-image: url(../img/togaTrello-removebg-preview.png);
     background-size: cover;
     background-size: 100%;
     width: 50vw;
@@ -200,4 +208,16 @@ section .container-apresentacao .Frase {
     width: 80%;
     flex-direction: column;
     font-size: 20px;
+}
+
+.numeros{
+    display: flex;
+    background-color: brown;
+    
+}
+div.um {
+    border-bottom: 10px solid black;
+    width: 100%;
+clip-path: polygon(1% 1%,0% 20%  );
+background-color: brown;
 }
