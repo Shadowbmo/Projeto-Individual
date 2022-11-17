@@ -65,6 +65,7 @@ HEADER
 
 */
 
+
 .imagem_do_inicio {
     background-size: cover;
     background-repeat: no-repeat;
@@ -72,6 +73,10 @@ HEADER
     height: 98vh;
     opacity: 1;
     background-image: url(../img/fotoDoInicio.gif);
+}
+
+header{
+    background-color:rgba(0, 90, 146, 0.144)
 }
 
 .imagem_do_inicio header {
@@ -115,11 +120,10 @@ HEADER
 
 .imagem_do_inicio header .container .itens li {
     margin-left: 30px;
-    border: 1px solid white;
     padding: 3px;
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    color: #2F4858;
+    color: #FFF5F4;
 }
 
 .imagem_do_inicio header .container .itens li:hover {
@@ -174,12 +178,22 @@ Imagem da toguro
 
 .imagem_do_inicio .container_toga {
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .imagem_do_inicio .container_toga .container_inicial {
     display: flex;
     align-items: center;
+    height: 100%;
     margin-top: 60px;
+}
+
+.imagem_do_inicio .container_toga .container_inicial2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
 }
 
 .imagem_do_inicio .container_toga .container_inicial .container_nome {
@@ -205,7 +219,7 @@ Imagem da toguro
 }
 
 .imagem_do_inicio .container_toga .container_frase {
-    color:#2F4858  ;
+    color:#F3A8A6  ;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -214,14 +228,10 @@ Imagem da toguro
     font-size: 15px;
     text-transform: uppercase;
     flex-wrap: wrap;
-
-
-
 }
 
 .imagem_do_inicio .container_toga .container_frase h1 {
-    background-color: #F3A8A6;
-    opacity: 0.8;
+    background-color: rgba(0, 90, 146, 0.329);
 }
 
 .imagem_do_inicio .container_toga .botao {
@@ -254,15 +264,22 @@ Imagem da toguro
     opacity: 0.5;
 }
 
+.imagem_do_inicio .container_toga .wave {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+
+}
 .imagem_do_inicio .container_toga .wave img {
     width: 100%;
-    height: 15vh;
-    background-size: cover;
+    height: 20vh;
+    display: flex;
+    align-items: flex-end;
 }
 
 .container_antes_do_carrosel {
     margin-top: 20px;
-    background-color: #000407;
+    background-color: #FEEBD6;
     width: 100%;
     height: 15vh;
     color: white;
@@ -298,8 +315,8 @@ Imagem da toguro
 }
 
 .espaco {
-    height: 10vh;
-    background-color: #000407;
+    height: 15vh;
+    background-color: #FEEBD6;
 }
 
 /*
@@ -595,7 +612,9 @@ Troca de personagem
 .imagem_do_inicioTodoroki .container_toga .botao button:hover {
     opacity: 0.5;
 }    
-
+.imagem_do_inicioTodoroki .container_toga .wave{
+    display: flex;
+}
 .imagem_do_inicioTodoroki .container_toga .wave img {
     width: 100%;
     height: 15vh;
@@ -637,11 +656,6 @@ Troca de personagem
     display: flex;
     align-items: center;
     justify-content: flex-end;
-}    
-
-.espaco {
-    height: 10vh;
-    background-color: #000407;
 }    
 
 

@@ -1,30 +1,37 @@
-.body_do_carrosel{
-    border-bottom-left-radius: 103px;
-    height: 20vh;
-}
-
-.mudanca_de_cor{
-    background-color: #000407;
+.mudanca_de_cor {
+    display: flex;
+    background-color: #FEEBD6;
     height: 80vh;
-    border-bottom-left-radius: 140px;
+    border-bottom-left-radius: 130px;
+    border-bottom: 3px solid black;
 }
 
-.mudanca_de_cor2{
-    background-color: aqua;
+.valores {
+    margin-left: 30px;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.container_carrosel {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .carrosel {
-    margin: 0 auto;
-    width: 800px;
-    height: 400px;
+    margin-right: 10px;
+    width: 600px;
+    height: 450px;
     overflow: hidden;
-    border: 2px solid #005B92;
+    border: 2px solid black;
+    border-top-left-radius: 100px;
+    border-bottom-right-radius: 100px;
 }
 
 .containerCarrosel {
     width: 400%;
-    height: 400px;
-    display: flex;
+    height: 450px;
 }
 
 .containerCarrosel input {
@@ -33,17 +40,18 @@
 
 .imagen {
     width: 25%;
+    height: 100%;
     position: relative;
 }
 
 .imagen img {
-    width: 800px;
+    width: 600px;
     height: 100%;
 }
 
 .navegarManualmente {
     position: absolute;
-    width: 800px;
+    width: 600px;
     margin-top: -40px;
     display: flex;
     justify-content: center;
@@ -59,7 +67,7 @@
 }
 
 .botaoManual:hover {
-    background-color:#005B92;
+    background-color: #005B92;
 }
 
 #botao1:checked~.primeira {
@@ -79,11 +87,10 @@
 }
 
 .navegacaoAutomatica {
-display: flex;
+    display: flex;
 }
 
-.navegacaoAutomatica div{
-    border: 2px solid black;
+.navegacaoAutomatica div {
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
@@ -91,21 +98,22 @@ display: flex;
     margin-left: 30px;
 }
 
-#botao1:checked ~ .navegacaoAutomatica .botaoAutomatico1{
+#botao1:checked~.navegacaoAutomatica .botaoAutomatico1 {
     background-color: white;
 
 }
 
-#botao2:checked ~ .navegacaoAutomatica .botaoAutomatico2{
+#botao2:checked~.navegacaoAutomatica .botaoAutomatico2 {
     background-color: white;
-    
+
 }
 
-#botao3:checked ~ .navegacaoAutomatica .botaoAutomatico3{
+#botao3:checked~.navegacaoAutomatica .botaoAutomatico3 {
     background-color: white;
-    
+
 }
-#botao4:checked ~ .navegacaoAutomatica .botaoAutomatico4{
+
+#botao4:checked~.navegacaoAutomatica .botaoAutomatico4 {
     background-color: white;
-    
+
 }
