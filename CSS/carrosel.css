@@ -1,7 +1,7 @@
 .mudanca_de_cor {
     display: flex;
     background-color: #FEEBD6;
-    height: 80vh;
+    height: 90vh;
     border-bottom-left-radius: 130px;
     border-bottom: 3px solid black;
 }

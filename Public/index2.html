@@ -12,6 +12,7 @@
 </head>
 
 <body>
+<div class="body">
 
     <!-- header e imagem do fundo -->
     <div class="imagem_do_inicio" id="imagem_do_inicio">
@@ -21,7 +22,7 @@
                     <li><a href="#">LOGO</a></li>
                 </div>
                 <div class="itens">
-                    <li><a href="#" class="item">Inicio</a></li>
+                    <li><a href="#" class="item">Jogos</a></li>
                     <li><a href="#">Personagens</a> </li>
                 </div>
                 <div class="botaos">
@@ -82,8 +83,31 @@
             
             <!-- inicio do carrosel  -->
             <div class="valores">
-                  valores
-            </div>
+                 <div class="caixa-valor">
+                    <div class="valor-texto">
+                        Lorem ipsum dolor 
+
+                    </div>
+                    <div class="valor-foto1">
+                        <img src="../img/himikotogavalores.png" alt="">
+                    </div>
+                 </div> 
+            
+                 <div class="espaco-caixa">
+                </div>
+
+                     <div class="caixa-valor">
+                        <div class="valor-texto">
+                            Lorem ipsum dolor 
+                            <span class="valor-texto-parte-de-baixo">
+                                icone
+                            </span>
+                        </div>
+                        <div class="valor-foto2">
+                            <img src="../img/himikotogavalores3.png" alt="">
+                        </div>
+                     </div> 
+           </div>
                 <div class="container_carrosel">
 
                     <div class="carrosel">
@@ -118,7 +142,9 @@
                                 <div class="botaoAutomatico4"></div>
                             </div>
                         </div>
-    
+                        <div class="teste">
+                            asdsa
+                        </div>
                         <!-- botãos para navegar manualmente -->
                         <div class="navegarManualmente">
                             <label for="botao1" class="botaoManual"></label>
@@ -126,17 +152,90 @@
                             <label for="botao3" class="botaoManual"></label>
                             <label for="botao4" class="botaoManual"></label>
                         </div>
-    
-    
-    
                     </div>
             </div>
 
         </div>
         <div class="container_personagem">
+                <div class="miniHeader" >
+                    <div class="container">
+                        <div class="logo">
+                            <li><a href="#">Vilã</a></li>
+                        </div>
+                        <div class="itens">
+                            <li><a href="#" class="item">Himiko toga</a></li>
+                            <li><a href="#" class="item">Todoroki</a></li>
+                            <li><a href="#" class="item">Himiko toga</a></li>
+                        </div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="containerPersonagem">
+                    <div class="containerPersonagem-Direita">
+                        <div class="descricao" >
+                            <div class="descricao-titulo">
+                                <h1>Himiko Toga</h1>
+                            </div>
+                            <div class="descricao-texto">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi suscipit distinctio natus repellat vel corrupti ipsa deserunt quas in! Deserunt molestias a consectetur quidem vero, natus quam labore ipsam ducimus!
+                            </div>
+                        </div>
+                        <div class="tres-caixas">
+                            <div class="caixa1">
+                                Lorem ipsum
+                            </div>
+                            <div class='caixa2'>
+                                Lorem ipsum
+                             </div>
+                             <div class="caixa3">
+                                Lorem ipsum
+                             </div>
+                        </div>
+                        <div class="divisor-de-card">
+                            <section>
+                                <div class="card-cima">
+                                    <img src="../img/himikouraraka.png" alt="">
+                                </div>
+                                <div class="card-baixo">
+                                    
+                             <h1 class="habilidade">habilidade</h1>
+                                <h1 class="habilidade2">Transformar</h1>
+                                 </div>
+                                </section>
+                            <div class="card-direita">
+                                <div class="ferramenta">
+                                    <div class="botao">
+                                        <div class="">
+                                            <li>
+                                                <a href="#">
+                                                    <button onclick="transformarTodoroki()">
+                                                       Transformar
+                                                    </button>
+                                                </a>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    <div class="teste">
 
-
+                                        <h1>
+                                          Arma:
+                                        </h1> 
+                                              <img src="../img/facaToga.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="containerPersonagem-esquerda">
+                            <div class="caixa-personagem">
+                                <img src="../img/teste2.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
         </div>
+</div>
 
 
 </body>
@@ -145,7 +244,7 @@
 
 
 <script>
-    function todoroki() {
+    function transformarTodoroki() {
         h1_nome_personagem.innerHTML = 'todoroki';
         imagem_do_inicio.classList = 'imagem_do_inicioTodoroki';
         frase1.innerHTML = `"Nunca se esqueça de quem você quer se tornar."`
