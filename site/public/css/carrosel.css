@@ -1,0 +1,57 @@
+.mudanca_de_cor {
+    display: flex;
+    background-color: #FEEBD6;
+    height: 90vh;
+    border-bottom-left-radius: 130px;
+    border-bottom: 3px solid black;
+}
+
+
+
+.container_carrosel {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.carrosel {
+    margin-right: 10px;
+    width: 550px;
+    height: 520px;
+    overflow: hidden;
+    border: 2px solid black;
+    border-top-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+
+.containerCarrosel {
+    width: 550px;
+    height: 520px;
+}
+
+.imagen {
+    width: 550px;
+    height: 520px;
+    position: relative;
+}
+
+.imagen img {
+    width: 550px;
+    height: 520px;
+}
+
+
+    /* parte de java no carrosel */
+
+.ativo{
+    display: block !important;
+    animation-name: opacity;
+    animation-duration: 2s;
+}
+  
+@keyframes opacity {
+    from {opacity: 0%;}
+
+    to {opacity: 100%;}
+  }
+
