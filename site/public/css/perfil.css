@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --brancopuro: #FFF;
+    --BrancoMelvs: #eff0e8d5;
+    --VerdeClaro: #11C76F;
+    --HoverMenu: rgba(23, 233, 132, 0.701);
+    --TextoPreto: #000;
+    --TextoVerdeEscuro: #054A29;
+    --VerdeEscuro: #054A29;
+    --FundoGrafico: #eff0e8d5;
+    --Sombra: rgba(0, 0, 0, 0.08);
+    --TextoVerdeClaro: #11C76F;
+    --Botao: #D9D9D9;
+    --critico: #ff0000;
+    --ok: #11C76F;
+    --atencao: #bbb502;
+    --adicionar: #D4FADE;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--BrancoMelvs);
+}
+
+body.Escuro {
+    --BrancoMelvs: #3A3B3C;
+    --VerdeClaro: #242526;
+    --HoverMenu: #4D4C4C;
+    --TextoPreto: #CCC;
+    --TextoVerdeEscuro: #CCC;
+    --VerdeEscuro: #3A4A40;
+    --FundoGrafico: rgba(255, 255, 255, 0.179);
+    --Sombra: rgba(255, 255, 255, 0.179);
+    --brancopuro: #000;
+    --TextoVermelho: #B75E38;
+    --TextoLaranja: #F9F871;
+    --TextoVerdeClaro: #11C76F;
+    --Botao: #697987;
+    --adicionar: #3a3a3a;
+}
+
+i {
+    font-size: 24px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color: var(--TextoVerdeEscuro);
+}
+
+
+.navegacao {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    display: flex;
+    margin-top: 60px;
+    position: fixed;
+    width: 60px;
+    height: 80%;
+    background-color: #000;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.navegacao ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.navegacao ul li {
+    position: relative;
+    width: 100%;
+    border-radius: 30px;
+}
+
+.navegacao ul li .fotoDePerfil {
+    margin-bottom: 40px;
+}
+
+/* hover */
+
+.navegacao ul li:hover {
+    background: var(--HoverMenu);
+}
+
+.navegacao ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--TextoVerdeEscuro);
+
+}
+
+.navegacao ul li a .icone {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+
+}
+
+.navegacao ul li a i {
+    font-size: 24px;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color: var(--TextoVerdeEscuro);
+}
+
+
+.navegacao ul li a .titulo {
+    position: relative;
+    display: block;
+    padding: 0 10pxs;
+    height: 60px;
+    line-height: 60px;
+}
+
+.navegacao ul li a .Modo {
+    position: relative;
+    display: block;
+    padding: 0 10pxs;
+    height: 60px;
+    line-height: 60px;
+}
+
+.menu {
+    position: absolute;
+    width: 60px;
+    left: 60px;
+    transition: 0.5s;
+    background-color: var(--BrancoMelvs);
+    min-height: 100vh;
+}
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: var(--BrancoMelvs);
+    font-size: 2.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.containerComentarios {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+}
+
+.conteudoComentarios {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.caixaComentario {
+    background-color: rgb(83, 69, 69);
+    height: 130%;
+    width: 50%;
+    flex-direction: column;
+    display: flex;
+    margin-top: 20px;
+}
+
+.caixaComentario .comentarioCima {
+    display: flex;
+}
+
+.caixaComentario .nome {
+    width: 20%;
+    margin-left: 30px;
+    font-size: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.caixaComentario .icone {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    margin-right: 30px;
+    font-size: 20px;
+    justify-content: flex-end;
+}
+
+.caixaComentario .icone i {
+    color: black;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.caixaComentario .icone i:hover {
+    color: red;
+}
+
+.caixaComentario .dia {
+    width: 90%;
+    margin-left: 25px;
+    font-size: 15px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.caixaComentario .comentario {
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-right: 25px;
+    font-size: 15px;
+    align-items: baseline;
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.caixaComentario .input {
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-right: 25px;
+    font-size: 15px;
+    align-items: baseline;
+    justify-content: flex-start;
+    height: 50px;
+}
+
+.caixaComentario input {
+    width: 100%;
+    height: 30px;
+}
+
+/* tag ativar */
+.navegacao.ativar {
+    width: 0px;
+}
+
+.menu.ativar {
+    width: 0px;
+    left: 0px;
+}
