@@ -86,7 +86,7 @@
 
 <!--Menu-->
 
-<div class="menu">
+<div class="menu" onclick="toggle()">
 
     <!-- Parte de Cima que contem A logo de Melvs e O botão de ocutar o menu-->
     <div class="barra-de-cima">
@@ -99,28 +99,47 @@
 
         </div>
 
-        <!-- Div que contem A LOGO DA MELVIS -->
-        <div>
-            <!-- Imagem da logo da MELVS VERDE -->
-            <img src="" alt="">
-
-        </div>
-
-        <div>
-
-        </div>
-
     </div>
 
 </div>
-<div>
-    <div class="containerComentarios">
-        <div class="conteudoComentarios">
-            <div class="caixaComentario">
-                <div class="comentarioCima">
-                    <h4 class="nome">
-                        Comente
-                    </h4>
+
+
+ <!-- frase com raio de fundo -->
+ <div class="containerJogos" id="jogos">
+    <div class="container_inicial">
+       
+       <a href="">
+        <img src="./assets/img/fotodoInicioTodoroki.gif">
+
+       </a> 
+
+    </div>
+    <div class="fraseJogo">
+                <div class="frase">
+                    Escolha um dos jogos, e dê um feedBack para nossa equipe :)
+                    <div class="botao">
+
+                        <li>
+                            <button onclick="feedback()"> FeedBack </button>
+                        </li>
+                    </div>
+                </div>
+    </div>
+    <div class="container_inicial2">     
+        <img src="./assets/img/fotoDoInicio.gif">
+    </div>
+
+</div>
+
+
+
+
+<div class="dialog">
+    <div class="containerComentar">
+        <div class="conteudoComentar">
+            <div class="caixaComentar">
+                <div class="comentarCima">
+                    <i class="uil uil-times" onclick="fechar()"></i>
                 </div>
                 <div class="comentario">
                     <input placeholder="Comente" id="input_comentario">
@@ -129,6 +148,8 @@
                     <button onclick="publicar()">
                         Comentar
                     </button>
+
+                    <button> fechar </button>
                 </div>
             </div>
             <!--Caixa comentario-->
@@ -138,14 +159,13 @@
     <!--Cotaniner Comentarios -->
 </div>
 <!-- **************************************************************************************** -->
-<div class="containerComentarios" >
+<div class="containerComentarios">
     <div class="conteudoComentarios" id="CaixaDeComentarios">
         <div class="caixaComentario">
         </div>
-        <!--Caixa comentario--> 
+        <!--Caixa comentario-->
     </div>
     <!--Conteudo comentarios -->
-    
 </div>
 <!--Cotaniner Comentarios -->
 
@@ -178,9 +198,23 @@
     menu.classList.toggle('ativar');
 </script>
 
+<!-- Modal Modal Modal Modal Modal Modal Modal Modal Modal Modal Modal Modal Modal Modal Modal -->
 
+<script>
+    var modal = document.querySelector("dialog")
+function feedback() {
+    //modal.showModal() 
+    jogos.classList = 'modalzinho'
+}
+
+function fechar() {
+   // modal.close()
+    jogos.classList = 'containerJogos'
+}
+</script>
 
 <!-- MODO ESCURO  MODO ESCURO  MODO ESCURO  MODO ESCURO  MODO ESCURO  MODO ESCURO  MODO ESCURO -->
+
 <script>
     var clique = 1;
 
@@ -213,7 +247,10 @@
 </script>
 
 <script>
-
+    var personagem1 = 'sla'
+    function personagem(){
+        var personagem1 = botao_personagem; 
+    }
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     //  function limparFormulario() {
@@ -224,7 +261,8 @@
         var idUsuario = sessionStorage.ID_USUARIO;
 
         var corpo = {
-            descricao: input_comentario.value
+            descricao: input_comentario.value,
+            personagem: personagem1
         }
 
         fetch(`/avisos/publicar/${idUsuario}`, {
@@ -290,47 +328,80 @@
         fetch("/avisos/listar").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
-                //    var feed = document.getElementById("feed_container");
-              //      var mensagem = document.createElement("span");
+                    //    var feed = document.getElementById("feed_container");
+                    //      var mensagem = document.createElement("span");
                     mensagem.innerHTML = "Nenhum resultado encontrado."
-                    feed.appendChild(mensagem);
+                   feed.appendChild(mensagem);
                     throw "Nenhum resultado encontrado!!";
                 }
 
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
-                  //  var feed = document.getElementById("feed_container");
+                    //  var feed = document.getElementById("feed_container");
                     CaixaDeComentarios.innerHTML = "";
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
 
-                        CaixaDeComentarios.innerHTML += `
-                        <div class="conteudoComentarios">
-        <div class="caixaComentario">
-            <div class="comentarioCima">
-                <h4 class="nome">
-                    ${publicacao.nick}
-                </h4>
-                <div class="icone">
-                    <i class="uil uil-heart"></i>
+
+                        if (publicacao.gostei == 'gostei'){
+                            CaixaDeComentarios.innerHTML += `
+                            <div class="conteudoComentarios">
+            <div class="caixaComentario">
+                <div class="comentarioCima">
+                    <h4 class="nome">
+                        ${publicacao.nick}
+                    </h4>
+                    <div class="icone2">
+                        <i class="uil uil-heart"></i>
+                    </div>
+                </div>
+    
+                <div class="dia">
+                    Comentado no dia: ${publicacao.dataComentario}
+                </div>
+                <div class="comentario">
+                    "${publicacao.descricao}"
+                </div>
+                <div class="input">
+                    <input placeholder="Comente">
                 </div>
             </div>
-
-            <div class="dia">
-                Comentado no dia: ${publicacao.dataComentario}
-            </div>
-            <div class="comentario">
-                ${publicacao.descricao}
-            </div>
-            <div class="input">
-                <input placeholder="Comente">
-            </div>
+            <!--Caixa comentario-->
         </div>
-        <!--Caixa comentario-->
-    </div>
-    <!--Conteudo comentarios -->
-                        
-                        `
+        <!--Conteudo comentarios -->
+                            
+                            `
+                        }
+                        else{
+
+                            CaixaDeComentarios.innerHTML += `
+                            <div class="conteudoComentarios">
+            <div class="caixaComentario">
+                <div class="comentarioCima">
+                    <h4 class="nome">
+                        ${publicacao.nick}
+                    </h4>
+                    <div class="icone">
+                        <i class="uil uil-heart"></i>
+                    </div>
+                </div>
+    
+                <div class="dia">
+                    Comentado no dia: ${publicacao.dataComentario}
+                </div>
+                <div class="comentario">
+                    "${publicacao.descricao}"
+                </div>
+                <div class="input">
+                    <input placeholder="Comente">
+                </div>
+            </div>
+            <!--Caixa comentario-->
+        </div>
+        <!--Conteudo comentarios -->
+                            
+                            `
+                        }
                     }
 
                     // finalizarAguardar();
