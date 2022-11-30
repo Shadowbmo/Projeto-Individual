@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.tela_do_jogo {
+    width: 100%;
+    height: 70vh;
+    border: 1px solid black;
+    position: relative;
+    margin: 0 auto;
+    border-bottom: 15px solid rgb(44, 232, 44);
+
+    /* comando que quando sair da tela ela ficar ''escondida'' */
+    overflow: hidden;
+
+    background-image: url(./img/cenarioluta.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.fogo {
+    /* Deixa tudo absolute para não interferir um no outro */
+    position: absolute;
+    width: 100px;
+    height: 70px;
+    /* Definindo a animação do fogo, que vai ser 2s 
+    e linear */
+
+    animation: animacao_do_fogo 1.5s infinite linear;
+    /* colocando ele no começo da tela */
+    bottom: 0;
+
+}
+
+.toga {
+    width: 400px;
+    position: absolute;
+    bottom: 0;
+}
+.pulo {
+    animation: animacao_do_pulo 500ms ease-out;
+}
+
+.nuvens{
+    position: absolute;
+    animation: animacao_das_nuvens 25s infinite linear;
+    width: 550px; 
+}
+
+.reiniciar {
+    position: absolute;
+    bottom: center;
+}
+@keyframes animacao_do_fogo {
+
+    /* aonde vai começar a animação e onde vai terminar 
+    queremos que comece em 0 e termine em 100 */
+    from {
+        right: -80px;
+    }
+
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes animacao_do_pulo {
+    
+    0% {
+        bottom: 0;
+    }
+    40% {
+        bottom: 180px;
+    }
+
+    50% {
+        bottom: 180px;
+    }
+
+    60%{
+        bottom: 180px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+
+}
+
+@keyframes animacao_das_nuvens {
+    from{
+        right: -550px;;
+    }
+    to {
+        right: 100%;
+    }
+
+}

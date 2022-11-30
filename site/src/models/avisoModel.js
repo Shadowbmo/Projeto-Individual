@@ -1,21 +1,21 @@
 var database = require("../database/config");
 
-function listar() {
+function listar(idUsuario) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
     SELECT
     a.id AS idAviso,
-    a.descricao,
+    a.comentario,
     DATE_FORMAT(dataComentario, '%d-%m-%Y') as dataComentario,
-    a.personagem,
     a.fk_usuario,
+    a.personagem,
     u.id AS idUsuario,
     u.nick,
     u.email,
     u.senha
 FROM aviso a
     INNER JOIN usuario u
-        ON a.fk_usuario = u.id;
+        ON a.fk_usuario = u.id order by idUsuario = ${idUsuario} desc;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -63,10 +63,10 @@ function listarPorUsuario(idUsuario) {
     return database.executar(instrucao);
 }
 
-function publicar(descricao, idUsuario, personagem) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", descricao, idUsuario);
+function publicar(comentario, idUsuario, personagem) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", comentario, idUsuario);
     var instrucao = `
-        INSERT INTO aviso (descricao, fk_usuario, dataComentario, personagem) VALUES ( '${descricao}', ${idUsuario}, now(), ${personagem});
+        INSERT INTO aviso (comentario, fk_usuario, dataComentario, personagem) VALUES ( '${comentario}', ${idUsuario}, now(), '${personagem}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

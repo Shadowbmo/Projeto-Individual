@@ -6,34 +6,46 @@
 comandos para mysql - banco local - ambiente de desenvolvimento
 */
 
-CREATE DATABASE projeto2;
-USE projeto2;
+create database projeto3;
+use projeto3;
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nick VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(256)
+create table avaliacao(
+idAvaliacao int primary key auto_increment,
+nota char(1) not null
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(250),
-    dataComentario varchar(30) default 'now()',
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+
+create table usuario (
+id int primary key auto_increment,
+nick varchar(50),
+email varchar(50),
+senha varchar(256),
+fkAvaliacao int,
+foreign key (fkAvaliacao) references avaliacao (idAvaliacao)
 );
 
+
+create table aviso (
+id int auto_increment,
+dataComentario varchar(30) default 'now()',
+personagem varchar(45),
+fk_usuario int,
+comentario varchar(500),
+primary key (id, fk_usuario),
+foreign key (fk_usuario) references usuario(id)
+);
  -- insert into aviso (descricao, fk_usuario, dataComentario) values
        SELECT
             a.id AS idAviso,
-            a.descricao,
+            a.comentario,
             DATE_FORMAT(dataComentario, '%d-%m-%Y') as dataComentario,
             a.fk_usuario,
+            a.personagem,
             u.id AS idUsuario,
             u.nick,
             u.email,
             u.senha
         FROM aviso a
             INNER JOIN usuario u
-                ON a.fk_usuario = u.id;
+                ON a.fk_usuario = u.id order by idUsuario = ;
+                

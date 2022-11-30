@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./tela_Inicial_Do_Grafico.html">
+                    <a href="./perfil.html">
 
                         <!-- Imagem do ICONE DO GRAFICO-->
                         <span class="icone"> <i class="uil uil-home"></i> </span>
@@ -50,20 +50,11 @@
 
 
 
+             
                 <li>
-                    <a href="./configuracoes.html">
-
-                        <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
-                        <span class="icone"><i class="uil uil-cog"></i></span>
-                        <span class="titulo"> Configurações</span>
-
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="Modo" onclick="ModoClaro()">
+                    <a href="#" >
                         <!-- Dark Mode -->
-                        <span class="icone"><i class="uil uil-moon"></i> </span>
-                        <span class="icone"> Modo Escuro </span>
+                        <span class="icone"><i class="uil uil-play"></i></span>
                     </a>
 
                 </li>
@@ -103,26 +94,26 @@
 
 </div>
 
-
- <!-- frase com raio de fundo -->
- <div class="containerJogos" id="jogos">
+<!-- **************************************************************************************** -->
+<!-- Jogos / feedback -->
+<div class="containerJogos" id="jogos">
     <div class="container_inicial">
-       
+
         <img src="./assets/img/fotodoInicioTodoroki.gif">
 
     </div>
-    <div class="fraseJogo">
-                <div class="frase" id="fraseFeedback">
-                    Escolha um dos jogos, e dê um feedBack para nossa equipe :)
-                    <div class="botao">
+    <div class="fraseJogo" id="fraseFeedback">
+        <div class="frase">
+            Escolha um dos jogos, e dê um feedBack para nossa equipe :)
+            <div class="botao">
 
-                        <li>
-                            <button onclick="feedback()"> FeedBack </button>
-                        </li>
-                    </div>
-                </div>
+                <li>
+                    <button onclick="feedback()"> FeedBack </button>
+                </li>
+            </div>
+        </div>
     </div>
-    <div class="container_inicial2">     
+    <div class="container_inicial2">
         <img src="./assets/img/fotoDoInicio.gif">
     </div>
 
@@ -130,41 +121,80 @@
 
 
 
-
-<div class="dialog">
+<!-- **************************************************************************************** -->
+<!-- modal -->
+<dialog>
     <div class="containerComentar">
         <div class="conteudoComentar">
             <div class="caixaComentar">
                 <div class="comentarCima">
                     <i class="uil uil-times" onclick="fechar()"></i>
+                    Comente o que achou dos jogos, e logo após selecione qual estilização você prefere para seu
+                    comentario
                 </div>
                 <div class="comentario">
-                    <input placeholder="Comente" id="input_comentario">
+                    <textarea placeholder="Comente" cols="30" rows="10" id="input_comentario"></textarea>
                 </div>
-                <div class="input">
-                    <button onclick="publicar()">
-                        Comentar
-                    </button>
+                <div class="botao">
 
-                    <button> fechar </button>
+                    <div class="botao">
+                        <select id="combo_personagem">
+                            <option value="Todoroki">Todoroki</option>
+                            <option value="Himiko Toga">Himiko Toga</option>
+                        </select>
+                        <li>
+                            <button onclick="publicar()"> Comentar </button>
+                        </li>
+                    </div>
                 </div>
             </div>
-            <!--Caixa comentario-->
         </div>
-        <!--Conteudo comentarios -->
     </div>
-    <!--Cotaniner Comentarios -->
-</div>
+</dialog>
 <!-- **************************************************************************************** -->
+<!-- analitics -->
+<div class="analitics">
+            <div class="titulo">
+                Notas e avaliações
+            </div>
+            <div class="subtitulo">
+                    As notas e avaliações são verificadas e avaliadas por uma equipe dedicada sempre a melhorar o site !
+                    veja abaixo as avalições e os feedbacks do site
+            </div>
+            <!-- div titulo -->
+            <div class="notas">
+                    <div class="media">
+                        <span id="media"> 4,5</span>
+                        <span class="estrelas"> 1 2 3 4 5</span>
+                        <span id="total" class="total">3.000</span>
+                    </div>
+                    <div class="quantidadeNotas">
+                            <span id="cinco" class="numero">
+                                5 <img src="./assets/img/barra100-removebg-preview.png">
+                            </span>
+                            <span class="numero">
+                                4 <img src="./assets/img/barra100-removebg-preview.png">
+                            </span>
+                            <span class="numero">
+                                3 <img src="./assets/img/barra100-removebg-preview.png">
+                            </span>
+                            <span class="numero">
+                                2 <img src="./assets/img/barra100-removebg-preview.png">
+                            </span>
+                            <span class="numero">
+                                1 <img src="./assets/img/barra100-removebg-preview.png">
+                            </span>
+                    </div>
+            </div>
+</div> 
+<!-- Div analitics -->
+
+<!-- **************************************************************************************** -->
+<!-- comentarios -->
 <div class="containerComentarios">
     <div class="conteudoComentarios" id="CaixaDeComentarios">
-        <div class="caixaComentario">
-        </div>
-        <!--Caixa comentario-->
     </div>
-    <!--Conteudo comentarios -->
 </div>
-<!--Cotaniner Comentarios -->
 
 <!-- **************************************************************************************** -->
 
@@ -199,15 +229,15 @@
 
 <script>
     var modal = document.querySelector("dialog")
-function feedback() {
-    //modal.showModal() 
-    jogos.classList = 'modalzinho'
-}
+    function feedback() {
+        modal.showModal()
+        jogos.classList = 'modalzinho'
+    }
 
-function fechar() {
-   // modal.close()
-    jogos.classList = 'containerJogos'
-}
+    function fechar() {
+        modal.close()
+        jogos.classList = 'containerJogos'
+    }
 </script>
 
 <!-- MODO ESCURO  MODO ESCURO  MODO ESCURO  MODO ESCURO  MODO ESCURO  MODO ESCURO  MODO ESCURO -->
@@ -244,10 +274,10 @@ function fechar() {
 </script>
 
 <script>
-  //  var personagem1 = 'sla'
+    //  var personagem1 = 'sla'
     //function personagem(){
-//        var personagem1 = botao_personagem; 
-  //  }
+    //        var personagem1 = botao_personagem; 
+    //  }
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     //  function limparFormulario() {
@@ -258,8 +288,8 @@ function fechar() {
         var idUsuario = sessionStorage.ID_USUARIO;
 
         var corpo = {
-            descricao: input_comentario.value,
-            personagem: personagem1
+            comentario: input_comentario.value,
+            personagem: combo_personagem.value
         }
 
         fetch(`/avisos/publicar/${idUsuario}`, {
@@ -290,13 +320,6 @@ function fechar() {
 
     }
 
-    function editar(idAviso) {
-        sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
-        console.log("cliquei em editar - " + idAviso);
-        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
-        window.location = "/dashboard/edicao-aviso.html"
-
-    }
 
     function deletar(idAviso) {
         console.log("Criar função de apagar post escolhido - ID" + idAviso);
@@ -311,7 +334,7 @@ function fechar() {
                 window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
                 window.location = "/dashboard/mural.html"
             } else if (resposta.status == 404) {
-                window.alert("Deu 404!");   
+                window.alert("Deu 404!");
             } else {
                 throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
             }
@@ -319,14 +342,15 @@ function fechar() {
             console.log(`#ERRO: ${resposta}`);
         });
     }
-
+    var tem_comentario = 0;
     function atualizarFeed() {
+        var idUsuario = sessionStorage.ID_USUARIO;
         //aguardar();
-        fetch("/avisos/listar").then(function (resposta) {
+        fetch(`/avisos/listar/${idUsuario}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     fraseFeedback.innerHTML = `
-                    <div class="frase" id="fraseFeedback">
+                    <div class="frase">
                     Escolha um dos jogos, e dê um feedBack para nossa equipe :)
                     <div class="botao">
 
@@ -336,8 +360,6 @@ function fechar() {
                     </div>
                 </div>                    
                    `
-
-
                     throw "Nenhum resultado encontrado!!";
                 }
 
@@ -346,81 +368,146 @@ function fechar() {
                     //  var feed = document.getElementById("feed_container");
                     CaixaDeComentarios.innerHTML = "";
 
-                    for (let i = 0; i < resposta.length; i++) {
-                        var publicacao = resposta[i];
-                        if (idUsuario != publicacao.fkUsuario) {
-                        fraseFeedback.innerHTML = `    
-                    Escolha um dos jogos, e dê um feedBack para nossa equipe :)
-                    <div class="botao">
+                    for (let posicao = 0; posicao < resposta.length; posicao++) {
+                        var publicacao = resposta[posicao];
 
-                        <li>
-                            <button onclick="feedback()"> FeedBack </button>
-                        </li>
-                    </div>       
-                         `   
+
+                        if (idUsuario == publicacao.fk_usuario) {
+                            tem_comentario = 1;
                         }
-                        
 
-                        if (publicacao.gostei == 'gostei'){
+                        if (publicacao.personagem == 'Todoroki' && idUsuario == publicacao.fk_usuario) {
                             CaixaDeComentarios.innerHTML += `
                             <div class="conteudoComentarios">
-            <div class="caixaComentario">
-                <div class="comentarioCima">
-                    <h4 class="nome">
-                        ${publicacao.nick}
-                    </h4>
-                    <div class="icone2">
-                        <i class="uil uil-heart"></i>
+                <div class="caixaComentarioTodoroki">   
+                    <div class="caixaConteudo">
+    
+                        <div class="comentarioCima">
+                            <div class="nome">
+                                ${publicacao.nick}
+                            </div>
+                            <div class="botao">
+                                <li>
+                                    <button onclick="deletar()">
+                                        Apagar
+                                    </button>
+        
+                                </li>
+
+                            </div>
+                        </div>
+                        <div class="dia">
+                            Comentado no dia: ${publicacao.dataComentario}
+                        </div>
+                        <div class="comentario">
+                            "${publicacao.comentario}" 
+                        </div>
                     </div>
                 </div>
-    
-                <div class="dia">
-                    Comentado no dia: ${publicacao.dataComentario}
-                </div>
-                <div class="comentario">
-                    "${publicacao.descricao}"
-                </div>
-                <div class="input">
-                    <input placeholder="Comente">
-                </div>
+                <!--Caixa comentario-->
             </div>
-            <!--Caixa comentario-->
-        </div>
-        <!--Conteudo comentarios -->
+            <!--Conteudo comentarios -->  
                             
                             `
-                        }
-                        else{
-
+                        } else if (publicacao.personagem == 'Himiko Toga' && idUsuario == publicacao.fk_usuario) {
                             CaixaDeComentarios.innerHTML += `
                             <div class="conteudoComentarios">
-            <div class="caixaComentario">
-                <div class="comentarioCima">
-                    <h4 class="nome">
-                        ${publicacao.nick}
-                    </h4>
-                    <div class="icone">
-                        <i class="uil uil-heart"></i>
+                <div class="caixaComentarioHimiko">   
+                    <div class="caixaConteudo">
+    
+                        <div class="comentarioCima">
+                            <div class="nome">
+                                ${publicacao.nick}
+                            </div>
+                            <div class="botao">
+                                <li>
+                                    <button onclick="deletar()">
+                                        Apagar
+                                    </button>
+        
+                                </li>
+
+                            </div>
+                        </div>
+                        <div class="dia">
+                            Comentado no dia: ${publicacao.dataComentario}
+                        </div>
+                        <div class="comentario">
+                            "${publicacao.comentario}" 
+                        </div>
                     </div>
                 </div>
-    
-                <div class="dia">
-                    Comentado no dia: ${publicacao.dataComentario}
-                </div>
-                <div class="comentario">
-                    "${publicacao.descricao}"
-                </div>
-                <div class="input">
-                    <input placeholder="Comente">
-                </div>
+                <!--Caixa comentario-->
             </div>
-            <!--Caixa comentario-->
-        </div>
-        <!--Conteudo comentarios -->
+                            `
+                        } else if (publicacao.personagem == 'Himiko Toga') {
+                            CaixaDeComentarios.innerHTML += `
+                            <div class="conteudoComentarios">
+                <div class="caixaComentarioHimiko">   
+                    <div class="caixaConteudo">
+    
+                        <div class="comentarioCima">
+                            <div class="nome">
+                                ${publicacao.nick}
+                            </div>
+                        </div>
+                        <div class="dia">
+                            Comentado no dia: ${publicacao.dataComentario}
+                        </div>
+                        <div class="comentario">
+                            "${publicacao.comentario}" 
+                        </div>
+                    </div>
+                </div>
+                <!--Caixa comentario-->
+            </div>
+                            `
+                        } else if (publicacao.personagem == 'Todoroki') {
+                            CaixaDeComentarios.innerHTML += `
+                            <div class="conteudoComentarios">
+                <div class="caixaComentarioTodoroki">   
+                    <div class="caixaConteudo">
+    
+                        <div class="comentarioCima">
+                            <div class="nome">
+                                ${publicacao.nick}
+                            </div>
+                        </div>
+                        <div class="dia">
+                            Comentado no dia: ${publicacao.dataComentario}
+                        </div>
+                        <div class="comentario">
+                            "${publicacao.comentario}" 
+                        </div>
+                    </div>
+                </div>
+                <!--Caixa comentario-->
+            </div>
+            <!--Conteudo comentarios -->  
                             
                             `
                         }
                     }
+                    if (tem_comentario == 1) {
+                        fraseFeedback.innerHTML = `
+                            <div class="frase">
+                   Muito Obrigado pelo seu feedback :)
+                </div>           
+                `
+                    } else {
+                        fraseFeedback.innerHTML = `
+                        <div class="frase">
+                            Escolha um dos jogos, e dê um feedBack para nossa equipe :)
+                            <div class="botao">
+                                
+                                <li>
+                                    <button onclick="feedback()"> FeedBack </button>
+                                    </li>
+                    </div>
+                    </div>            
+                    `
+                    }
+
 
                     // finalizarAguardar();
                 });
@@ -433,19 +520,19 @@ function fechar() {
         });
     }
 
-    function testar() {
-        //   aguardar();
+    // function testar() {
+    //       aguardar();
 
-        var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
+    //     var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
 
-        var divResultado = document.getElementById("div_feed");
+    //     var divResultado = document.getElementById("div_feed");
 
-        divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
-        divResultado.innerHTML = formulario.get("descricao");
+    //     divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
+    //     divResultado.innerHTML = formulario.get("descricao");
 
-        //     finalizarAguardar();
+    //         finalizarAguardar();
 
-        return false;
-    }
+    //     return false;
+    // }
 
 </script>

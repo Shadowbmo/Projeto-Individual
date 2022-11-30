@@ -9,10 +9,9 @@
     box-sizing: border-box;
 }
 
-
 :root {
     --brancopuro: #FFF;
-    --BrancoMelvs: #eff0e8d5;
+   --LaranjaToga: #FEEBD6;
     --VerdeClaro: #11C76F;
     --HoverMenu: rgba(23, 233, 132, 0.701);
     --TextoPreto: #000;
@@ -30,7 +29,7 @@
 
 body {
     overflow-x: hidden;
-    background-color: var(--BrancoMelvs);
+    background-color: var(--LaranjaToga);
 }
 
 body.Escuro {
@@ -49,6 +48,7 @@ body.Escuro {
     --Botao: #697987;
     --adicionar: #3a3a3a;
 }
+
 
 i {
     font-size: 24px;
@@ -174,13 +174,17 @@ i {
 
 .conteudoComentarios {
     width: 100%;
+    background-color: #FEEBD6;
     align-items: center;
     display: flex;
     flex-direction: column;
 }
 
-.caixaComentario {
-    background-color: rgb(83, 69, 69);
+
+
+
+.caixaComentarioTodoroki {
+    background-image: url(../assets/img/TodorokiLogincadastro.jpg);
     height: 130%;
     width: 50%;
     flex-direction: column;
@@ -188,90 +192,60 @@ i {
     margin-top: 20px;
 }
 
-.caixaComentario .comentarioCima {
+
+.caixaComentarioHimiko {
+    background-image: url(../assets/img/HimikoTogaRecortes.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 130%;
+    width: 50%;
+    flex-direction: column;
+    display: flex;
+    margin-top: 20px;
+}
+
+
+.caixaConteudo {
+    background-color:rgba(41, 38, 38, 0.534);
+    margin: 30px;
+    color: white;
+}
+.comentarioCima {
     display: flex;
 }
 
-.caixaComentario .nome {
-    width: 20%;
-    margin-left: 30px;
-    font-size: 20px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
-.caixaComentario .icone {
+ .nome {
     width: 100%;
-    align-items: center;
-    display: flex;
-    margin-right: 30px;
+    padding-top: 20px;
+    margin-left: 40px;
     font-size: 20px;
-    justify-content: flex-end;
-}
-
-.caixaComentario .icone i {
-    color: black;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.caixaComentario .icone i:hover {
-    color: red;
-}
-
-.caixaComentario .icone2 i {
-    color: red;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.caixaComentario .icone2 i:hover {
-    color: black;
-}
-
-.caixaComentario .icone2 {
-    width: 100%;
-    align-items: center;
+    font-weight: bold;
     display: flex;
-    margin-right: 30px;
-    font-size: 20px;
-    justify-content: flex-end;
+    justify-content: start;
 }
 
-.caixaComentario .dia {
+
+
+ .dia {
     width: 90%;
-    margin-left: 25px;
+    padding-top: 10px;
+    padding-left: 30px;
     font-size: 15px;
-    align-items: center;
+    display: flex;
+    justify-content: start;
+}
+
+.comentario {
+    margin-top: 20px;
+    border-radius: 20px;
+    margin-left: 25px;
+    width: 90%;
+    height: 15vh;
+    font-size: 15px;
+    text-align: justify;
     display: flex;
     justify-content: flex-start;
-}
 
-.caixaComentario .comentario {
-    margin-top: 20px;
-    margin-left: 25px;
-    margin-right: 25px;
-    font-size: 15px;
-    align-items: baseline;
-    display: flex;
-    justify-content: flex-start;
-
-}
-
-.caixaComentario .input {
-    margin-top: 20px;
-    margin-left: 25px;
-    margin-right: 25px;
-    font-size: 15px;
-    align-items: baseline;
-    justify-content: flex-start;
-    height: 50px;
-}
-
-.caixaComentario input {
-    width: 100%;
-    height: 30px;
 }
 
 
@@ -294,8 +268,46 @@ i {
     list-style: none;
 
 }
+/* #BCE9E4; */
+.caixaConteudo .botao {
+    justify-content: center;
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    margin-right: 20px;
+}
 
+.caixaConteudo .botao li {
+    margin-left: 20px;
+    width: 100%;
+    padding: 2px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    object-fit: cover;
+    border: 1px solid white;
+    list-style: none;
 
+}
+
+.caixaComentarioTodoroki .botao button {
+    cursor: pointer;
+    height: 5vh;
+    color: #2F4858;
+    width: 6vw;
+    border: none;
+    background-color:#BCE9E4;
+    font-size: 15px;
+}
+
+.caixaComentarioHimiko .botao button {
+    cursor: pointer;
+    height: 5vh;
+    color: #2F4858;
+    width: 6vw;
+    border: none;
+    background-color:#F3A8A6;
+    font-size: 15px;
+}
 .botao button {
     cursor: pointer;
     height: 5vh;
@@ -314,97 +326,73 @@ dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.514);
 }
 
-.dialog {
+dialog {
     width: 100%;
     background-color: transparent;
+    border: none;
 }
 
 .modalzinho {
     display: none;
 }
 
-.dialog .containerComentar {
+dialog .containerComentar {
     height: 100%;
     width: 100%;
     display: flex;
     margin-top: 20px;
 }
 
-.dialog .conteudoComentar {
+dialog .conteudoComentar {
     width: 100%;
     align-items: center;
     display: flex;
     flex-direction: column;
+    border: none;
 }
 
-.caixaComentar {
-    background-color: rgb(83, 69, 69);
-    height: 130%;
-    width: 50%;
+dialog .caixaComentar {
+    background-color:#2F4858;
+    height: 45vh;
+    width: 60%;
+    display: flex;
     flex-direction: column;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 
 .caixaComentar .comentarCima {
-    background-color: green;
     display: flex;
+    margin-top: 20px;
+    color: white;
 }
 
-.caixaComentar .comentarCima i {
+dialog .caixaComentar .comentarCima i {
     cursor: pointer;
-    color: blue;
-    display: flex;
-    width: 50px;
-
+    width: 60px;
+    height: 70px;
+    color: white;
+    margin-left: 30px;
 }
 
-.caixaComentar .nome {
-    width: 20%;
+.caixaComentar .comentario {
+    width: 90%;
     margin-left: 30px;
     font-size: 20px;
     align-items: center;
     display: flex;
     justify-content: center;
 }
-
-.caixaComentar .icone {
+.caixaComentar textarea{
     width: 100%;
+    height: 100%;
+    margin-left: 30px;
+    font-size: 20px;
     align-items: center;
     display: flex;
-    margin-right: 30px;
-    font-size: 20px;
-    justify-content: flex-end;
+    justify-content: center;
 }
-
-.caixaComentar .icone i {
-    color: black;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.caixaComentario .icone i:hover {
-    color: red;
-}
-
-.caixaComentario .icone2 i {
-    color: red;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.caixaComentario .icone2 i:hover {
-    color: black;
-}
-
-.caixaComentario .icone2 {
-    width: 100%;
-    align-items: center;
-    display: flex;
-    margin-right: 30px;
-    font-size: 20px;
-    justify-content: flex-end;
-}
-
-.caixaComentario .dia {
+.caixaComentar  .dia {
     width: 90%;
     margin-left: 25px;
     font-size: 15px;
@@ -450,7 +438,7 @@ dialog::backdrop {
 }
 
 .containerJogos {
-    background-color: green;
+    background-color:#FEEBD6;
     width: 100%;
     height: 90vh;
     display: flex;
@@ -482,10 +470,11 @@ dialog::backdrop {
 }
 
 .containerJogos .fraseJogo .frase {
-    background-color: #B75E38;
+    background-color: #2F4858;
     height: 20vh;
     width: 40%;
     display: flex;
+    color: white;
     justify-content: center;
     border-bottom-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -505,4 +494,68 @@ dialog::backdrop {
 
 .containerJogos a {
     cursor: pointer;
+}
+/********************************************************************************************************/
+
+.analitics{
+    background-color: #F2E6E1;
+    height: 70vh;
+    width: 100%;
+    padding-left: 25%;
+    padding-right: 60px;
+    padding-top: 50px;
+    border-bottom: 3px solid black;
+}
+
+.analitics .titulo{
+font-size: 20px;
+margin-left: 50px;
+
+font-weight: bold;
+}
+
+.analitics .subtitulo{
+    margin-top: 15px;
+    width: 40%;
+    margin-left: 50px;
+
+    text-align: justify;
+    font-size: 15px;
+}
+.analitics .notas{
+    height: 70%;
+    display: flex;
+}
+.analitics .notas .media{
+    font-size: 50px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+}
+
+.analitics .notas .media .estrelas{
+    font-size: 25px;
+}
+
+.analitics .notas .media .total{
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.notas .quantidadeNotas{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 20px;
+    margin-left: 50px;
+}   
+
+.quantidadeNotas .numero {
+    margin-left: 30px;
+    align-items: center;
+    display: flex;
 }

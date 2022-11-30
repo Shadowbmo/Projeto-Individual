@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Estilo.css">
+</head>
+
+<body>
+    <div class="tela_do_jogo">
+
+        <img src="./img/fogoTodoroki-unscreen.gif" class="fogo">
+        <img src="./img/toga-correndo-AdobeExpress-unscreen.gif" class="toga" id="toga">
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<script>
+    const fogo = document.querySelector('.fogo')
+    var togaviva = true;
+    /* função pulo */
+    function pulo() {
+        if(togaviva){
+
+            toga.classList.add('pulo');
+            toga.src = "./img/TogaPuloAnimacao.gif"
+            toga.style.width = '150px'
+            /*set um tempo, depois de 500milisegundos vai tirar a class pulo para que ele possa pular novamente */
+            setTimeout(() => {
+                toga.classList.remove('pulo');
+                toga.src="./img/toga-correndo-AdobeExpress-unscreen.gif" 
+                toga.style.width = '400px'
+            }, 500);
+
+        }
+        else {
+            toga.src = './img/togaMorta-removebg-preview.png'
+            toga.style.width = '450px'
+        }
+
+
+    }
+
+    const loop = setInterval(() => {
+        const posicao_do_fogo = fogo.offsetLeft;
+
+        /* Pegando o estilo computado na tag class toga (pegando o bottom pq é de cima para baixo
+        retirando a frase Pixel com o replace e transformando em numero) */
+        const posicao_da_toga = Number(window.getComputedStyle(toga).bottom.replace('px', ''));
+
+
+        /*Se a posição do fogo for menor ou igual a 120  e aposição do fogo
+         for maior q 0 e menor que 80 pare a animação do fogo e deixe ele na posição que ele parou 
+         E
+            altere a imagem que ta e coloque a imagem, deixando seu tamanho em 70px e sua margin 50px
+                     
+         */
+        if (posicao_do_fogo <= 120 && posicao_do_fogo > 0 && posicao_da_toga < 80) {
+
+            fogo.style.animation = 'none';
+            fogo.style.display = `none`;
+
+            toga.style.animation = 'none';
+            toga.style.bottom = `0px`
+
+            toga.src = './img/togaMorta-removebg-preview.png'
+            toga.style.width = '450px'
+            toga.style.marginLeft = '50px'
+            setTimeout(() => {
+              pulo() 
+            }, 300);            togaviva = false;
+        }
+    }, 10);
+
+    /* Quando qualquer tecla prescionada ele ativa a função púlo */
+    document.addEventListener('keydown', pulo)
+</script>

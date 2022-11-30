@@ -6,7 +6,9 @@ function testar(req, res) {
 }
 
 function listar(req, res) {
-    avisoModel.listar().then(function (resultado) {
+    var idUsuario = req.params.idUsuario;
+
+    avisoModel.listar(idUsuario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -66,16 +68,16 @@ function pesquisarDescricao(req, res) {
 }
 
 function publicar(req, res) {
-    var descricao = req.body.descricao;
+    var comentario = req.body.comentario;
     var idUsuario = req.params.idUsuario;
     var personagem = req.body.personagem;
 
-    if (descricao == undefined) {
+    if (comentario == undefined) {
         res.status(400).send("A descrição está indefinido!");
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        avisoModel.publicar( descricao, idUsuario, personagem)
+        avisoModel.publicar( comentario, idUsuario, personagem)
             .then(
                 function (resultado) {
                     res.json(resultado);
