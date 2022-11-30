@@ -220,6 +220,7 @@ i {
     margin-left: 40px;
     font-size: 20px;
     font-weight: bold;
+    text-transform: uppercase;
     display: flex;
     justify-content: start;
 }
@@ -353,7 +354,7 @@ dialog .conteudoComentar {
 
 dialog .caixaComentar {
     background-color:#2F4858;
-    height: 45vh;
+    height: 100%;
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -558,4 +559,19 @@ font-weight: bold;
     margin-left: 30px;
     align-items: center;
     display: flex;
+}
+
+dialog .estrelas {
+    display: flex;
+    margin-left: 5px;
+    color: gold;
+    justify-content: center;
+    align-items: center;
+}
+dialog .estrelas i {
+    color: gold;
+}
+
+dialog .estrelas button {
+cursor: pointer;
 }

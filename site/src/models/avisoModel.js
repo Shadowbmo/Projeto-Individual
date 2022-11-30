@@ -72,6 +72,17 @@ function publicar(comentario, idUsuario, personagem) {
     return database.executar(instrucao);
 }
 
+function publicarEstrelas(idUsuario, avaliacao) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ",idUsuario, avaliacao);
+    var instrucao = `
+    insert into avaliacao (nota) values
+    (${avaliacao}); ;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    
+    return database.executar(instrucao);
+}
+
 function editar(novaDescricao, idAviso) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", novaDescricao, idAviso);
     var instrucao = `
