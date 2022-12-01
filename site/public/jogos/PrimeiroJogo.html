@@ -2,6 +2,8 @@
 <html lang="pt-BR">
 
 <head>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,21 +12,86 @@
 </head>
 
 <body>
-    <div class="tela_do_jogo">
+    <div class="containerGrafico">
 
+        <!-- Div que contem a parte de navegação (parte verde do menu)-->
+        <div class="navegacao">
+            <ul>
+                <li style="display: none;">
+                    <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
+                    <a href="#">
+
+                        <!-- imagem do ICONE DA FOTO DE PERFIL-->
+                        <span class="icone"><i class="uil uil-user"></i> </span>
+                        <span class="titulo"><span id="b_usuario">usuário</span></span>
+
+                    </a>
+                </li>
+                <li>
+                    <a href="../perfil.html">
+
+                        <!-- Imagem do ICONE DO GRAFICO-->
+                        <span class="icone"> <i class="uil uil-home"></i> </span>
+                        <span class="titulo"> Início </span>
+
+                    </a>
+                </li>
+
+
+
+             
+                <li>
+                    <a href="./jogos/PrimeiroJogo.html" >
+                        <!-- Dark Mode -->
+                        <span class="icone"><i class="uil uil-play"></i></span>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="../index.html">
+
+                        <!-- Botão de Sair  -->
+                        <span class="icone"><i class="uil uil-signout"></i> </span>
+                        <span class="titulo"> Sair </span>
+
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    
+    <!-- **************************************************************************************** -->
+    
+    <!--Menu-->
+    
+    
+</div>
+    <div class="tela_do_jogo" id="reset">
         <img src="./img/fogoTodoroki-unscreen.gif" class="fogo">
         <img src="./img/toga-correndo-AdobeExpress-unscreen.gif" class="toga" id="toga">
         <img src="./img/todorokizinho-unscreen.gif" class="todoroki">
     </div>
 
     <div class="pontuacao">
-        <span>
-            score: <span id="score"> </span>
-        </span>
+
+        <div class="botao">
+            <div class="">
+               <span class="scoreS">
+               SCORE: <span id="score" class="ponto"> </span>
+            </span> 
+                <li>
+                    <a href="#">
+                        <button onclick="iniciar()">
+                            Jogar
+                        </button>
+                    </a>
+                </li>
+            </div>
+        </div>
     </div>
 </body>
 </html>
-
 
 
 
@@ -95,4 +162,23 @@
 
     /* Quando qualquer tecla prescionada ele ativa a função púlo */
     document.addEventListener('keydown', pulo)
+</script>
+
+
+<script>
+    function iniciar() {
+        score.innerHTML = 0;
+        scorezinho = 0;
+            fogo.style.animation = ' animacao_do_fogo 1.5s infinite linear';
+            fogo.style.display = `block`;
+
+            toga.style.animation = '';
+
+            toga.src = './img/toga-correndo-AdobeExpress-unscreen.gif'
+            toga.style.width = '450px'
+            toga.style.marginLeft = '0'
+
+   togaviva = true;
+    }
+
 </script>

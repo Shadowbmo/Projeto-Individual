@@ -28,7 +28,7 @@
         <!-- Div que contem a parte de navegação (parte verde do menu)-->
         <div class="navegacao">
             <ul>
-                <li>
+                <li style="display: none;">
                     <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
                     <a href="#">
 
@@ -71,176 +71,175 @@
             </ul>
         </div>
     </div>
-</body>
-
-<!-- **************************************************************************************** -->
-
-<!--Menu-->
-
-<div class="menu" onclick="toggle()">
-
-    <!-- Parte de Cima que contem A logo de Melvs e O botão de ocutar o menu-->
-    <div class="barra-de-cima">
-
-        <!-- Div Que tem o icone de Menu-->
-        <div class="toggle">
-
-            <!-- Imagem do ICONE DE MENU -->
-            <i class="uil uil-list-ul"></i>
-
-        </div>
-
+    
+    <!-- **************************************************************************************** -->
+    
+    <!--Menu-->
+    
+    <div class="menu" onclick="toggle()">
+        
+        <!-- Parte de Cima que contem A logo de Melvs e O botão de ocutar o menu-->
+        <div class="barra-de-cima">
+            
+            <!-- Div Que tem o icone de Menu-->
+            <div class="toggle">
+                
+                <!-- Imagem do ICONE DE MENU -->
+                <i class="uil uil-list-ul"></i>
+                
+            </div>
+            
     </div>
-
+    
 </div>
 
 <!-- **************************************************************************************** -->
 <!-- Jogos / feedback -->
 <div class="containerJogos" id="jogos">
     <div class="container_inicial">
-
+        
         <img src="./assets/img/inicial.gif">
         
     </div>
     <div class="fraseJogo" id="fraseFeedback">
         <div class="frase">
-             dê um feedBack para nossa equipe :)
+            dê um feedBack para nossa equipe :)
             <div class="botao">
-
+                
                 <li>
                     <button onclick="feedback()"> FeedBack </button>
                 </li>
             </div>
         </div>
     </div>
-
+    
 </div>
-    <div class="teste">
-
-        <div class="botao">
-            <a href="./jogos/PrimeiroJogo.html">
-                <li>
-                    <button>Comece a jogar</button>
-                </li>
+<div class="botaoComecar">
+    <div class="botao">
+        <a href="./jogos/PrimeiroJogo.html">
+            <li>
+                <button>Comece a jogar</button>
+            </li>
             </a>
         </div>
     </div>
-
-<!-- **************************************************************************************** -->
-<!-- modal -->
-<dialog>
-    <div class="containerComentar">
-        <div class="conteudoComentar">
-            <div class="caixaComentar">
-                <div class="comentarCima">
-                    <i class="uil uil-times" onclick="fechar()"></i>
-                    Comente o que achou dos jogos, e logo após selecione qual estilização você prefere para seu
-                    comentario
-                </div>
-                    <div class="estrelas">
-                      <select id="combo_estrelas">
-                          <option value="0">
-                              Avalie nosso site
-                          </option>
-                        <option value="1">
-                            &star;
-                        </option>
-                        <option value="2">
-                            &star; &star;
-                        </option>
-                        <option value="3">
-                            &star; &star; &star;
-                        </option>
-                        <option value="4">
-                            &star; &star; &star; &star;            
-                                    </option>
-                        <option value="5">
-                            &star; &star; &star; &star; &star;
-                                                </option>
-
-                      </select>
+    
+    <!-- **************************************************************************************** -->
+    <!-- modal -->
+    <dialog>
+        <div class="containerComentar">
+            <div class="conteudoComentar">
+                <div class="caixaComentar">
+                    <div class="comentarCima">
+                        <i class="uil uil-times" onclick="fechar()"></i>
+                        Comente o que achou dos jogos, e logo após selecione qual estilização você prefere para seu
+                        comentario
                     </div>
-                <div class="comentario">
-                    <textarea placeholder="Comente" cols="30" rows="10" id="input_comentario"></textarea>
-                </div>
-                <div class="botao">
-
-                    <div class="botao">
-                        <select id="combo_personagem">
-                            <option value="Todoroki">Todoroki</option>
-                            <option value="Himiko Toga">Himiko Toga</option>
+                    <div class="estrelas">
+                        <select id="combo_estrelas">
+                            <option value="0">
+                                Avalie nosso site
+                            </option>
+                            <option value="1">
+                                &star;
+                            </option>
+                            <option value="2">
+                                &star; &star;
+                            </option>
+                            <option value="3">
+                                &star; &star; &star;
+                            </option>
+                            <option value="4">
+                                &star; &star; &star; &star;            
+                            </option>
+                            <option value="5">
+                                &star; &star; &star; &star; &star;
+                            </option>
+                            
                         </select>
-                        <li>
-                            <button onclick="publicar()"> Comentar </button>
-                        </li>
+                    </div>
+                    <div class="comentario">
+                        <textarea placeholder="Comente" cols="30" rows="10" id="input_comentario"></textarea>
+                    </div>
+                    <div class="botao">
+                        
+                        <div class="botao">
+                            <select id="combo_personagem">
+                                <option value="Todoroki">Todoroki</option>
+                                <option value="Himiko Toga">Himiko Toga</option>
+                            </select>
+                            <li>
+                                <button onclick="publicar()"> Comentar </button>
+                            </li>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</dialog>
-<!-- **************************************************************************************** -->
-<!-- analitics -->
-<div class="analitics">
-            <div class="titulo">
-                Notas e avaliações
-            </div>
-            <div class="subtitulo">
+    </dialog>
+    <!-- **************************************************************************************** -->
+    <!-- analitics -->
+    <div class="analitics">
+        <div class="titulo">
+            Notas e avaliações
+        </div>
+        <div class="subtitulo">
                     As notas e avaliações são verificadas e avaliadas por uma equipe dedicada sempre a melhorar o site !
                     veja abaixo as avalições e os feedbacks do site
             </div>
             <!-- div titulo -->
             <div class="notas">
-                    <div class="media">
-                        <span id="mediaTela"> 4,5</span>
+                <div class="media">
+                    <span id="mediaTela"> 4,5</span>
                         <span class="estrelas" id="estrelasTela"> 
                             <img src="./assets/img/estrela_cinza.png" width="30px">
                         </span>
                         <span id="totalVotos" class="total">3.000</span>
                     </div>
                     <div class="quantidadeNotas">
-                            <span id="cinco" class="numero">
-                                5 <img src="./assets/img/barra0-removebg-preview.png">
-                            </span>
-                            <span id='quatro'class="numero">
-                                4 <img src="./assets/img/barra0-removebg-preview.png">
-                            </span>
-                            <span class="numero" id="tres">
-                                3 <img src="./assets/img/barra0-removebg-preview.png">
-                            </span>
-                            <span class="numero" id="dois">
-                                2 <img src="./assets/img/barra0-removebg-preview.png">
-                            </span>
-                            <span class="numero" id="um">
-                                1 <img src="./assets/img/barra0-removebg-preview.png">
-                            </span>
+                        <span id="cinco" class="numero">
+                            5 <img src="./assets/img/barra0-removebg-preview.png">
+                        </span>
+                        <span id='quatro'class="numero">
+                            4 <img src="./assets/img/barra0-removebg-preview.png">
+                        </span>
+                        <span class="numero" id="tres">
+                            3 <img src="./assets/img/barra0-removebg-preview.png">
+                        </span>
+                        <span class="numero" id="dois">
+                            2 <img src="./assets/img/barra0-removebg-preview.png">
+                        </span>
+                        <span class="numero" id="um">
+                            1 <img src="./assets/img/barra0-removebg-preview.png">
+                        </span>
                     </div>
+                </div>
+            </div> 
+            
+            <div class="mural">
+                
+                FeedBacks
             </div>
-</div> 
+            <!-- Div analitics -->
+            
+            <!-- **************************************************************************************** -->
+            <!-- comentarios -->
+            <div class="containerComentarios">
+                <div class="conteudoComentarios" id="CaixaDeComentarios">
+                </div>
+            </div>
+        </body>
+            
+            <!-- **************************************************************************************** -->
+            
+            </html>
+            
 
-<div class="mural">
-
-  FeedBacks
-</div>
-<!-- Div analitics -->
-
-<!-- **************************************************************************************** -->
-<!-- comentarios -->
-<div class="containerComentarios">
-    <div class="conteudoComentarios" id="CaixaDeComentarios">
-    </div>
-</div>
-
-<!-- **************************************************************************************** -->
-
-</html>
-
-
-<!-- SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  -->
-
-
-<!-- MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU  -->
-<script>
+            <!-- SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  SCRIPT  -->
+            
+            
+            <!-- MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU  -->
+            <script>
     // colcoar o nome do usuario
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 

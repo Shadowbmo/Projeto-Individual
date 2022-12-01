@@ -55,7 +55,7 @@ i {
     height: 60px;
     line-height: 60px;
     text-align: center;
-    color: var(--TextoVerdeEscuro);
+    color: #FEEBD6;
 }
 
 
@@ -67,7 +67,7 @@ i {
     position: fixed;
     width: 60px;
     height: 80%;
-    background-color: #000;
+    background-color: #2F4858;
     overflow: hidden;
     transition: 0.5s;
 }
@@ -105,7 +105,7 @@ i {
     width: 100%;
     display: flex;
     text-decoration: none;
-    color: var(--TextoVerdeEscuro);
+    color:#FEEBD6;
 
 }
 
@@ -125,7 +125,7 @@ i {
     height: 60px;
     line-height: 60px;
     text-align: center;
-    color: var(--TextoVerdeEscuro);
+    color:#FEEBD6;
 }
 
 
@@ -162,7 +162,7 @@ i {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #000;
+    background-color: #2F4858;
 }
 
 .containerComentarios {
@@ -588,4 +588,40 @@ cursor: pointer;
     font-size: 30px;
     font-weight: bold;
     margin-top: 15px;
+}
+.botaoComecar{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.botaoComecar .botao{
+        justify-content: center;
+        display: flex;
+        margin-top: 10px;
+        align-items: center;
+        margin-right: 20px;
+}
+
+
+
+.botaoComecar .botao button {
+    cursor: pointer;
+    height: 5vh;
+    color: #2F4858;
+    width: 10vw;
+    border: none;
+    background-color:#F3A8A6;
+    font-size: 15px;
+}
+
+
+.botaoComecar .botao li {
+    width: 87%;
+    padding:2px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    object-fit: cover;
+    border: 1px solid rgb(0, 0, 0);
+    list-style: none;
+
 }
