@@ -15,7 +15,16 @@ function listar(idUsuario) {
     u.senha
 FROM aviso a
     INNER JOIN usuario u
-        ON a.fk_usuario = u.id order by idUsuario = ${idUsuario} desc;
+        ON a.fk_usuario = u.id order by idUsuario = 1 desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+function atualizar() {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizar()");
+    var instrucao = `
+    select count(usuario.id) as 'votacao' ,avaliacao.nota, count(usuario.fkAvaliacao) as 'total' from usuario join avaliacao on avaliacao.idAvaliacao = usuario.fkAvaliacao
+    group by usuario.fkAvaliacao;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -73,10 +82,9 @@ function publicar(comentario, idUsuario, personagem) {
 }
 
 function publicarEstrelas(idUsuario, avaliacao) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ",idUsuario, avaliacao);
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banc   o\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicarEstrelas(): ",idUsuario, avaliacao);
     var instrucao = `
-    insert into avaliacao (nota) values
-    (${avaliacao}); ;
+    update usuario set fkAvaliacao = '${avaliacao}' where id = '${idUsuario}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     
@@ -105,6 +113,8 @@ module.exports = {
     listar,
     listarPorUsuario,
     pesquisarDescricao,
+    atualizar,
+    publicarEstrelas,
     publicar,
     editar,
     deletar

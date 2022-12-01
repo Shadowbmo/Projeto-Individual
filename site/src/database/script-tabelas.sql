@@ -5,15 +5,20 @@
 /*
 comandos para mysql - banco local - ambiente de desenvolvimento
 */
-
 create database projeto3;
 use projeto3;
 
 create table avaliacao(
-idAvaliacao int primary key auto_increment,
+idAvaliacao int primary key,
 nota char(1) not null
 );
 
+insert into avaliacao values 
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5);
 
 create table usuario (
 id int primary key auto_increment,
@@ -23,7 +28,6 @@ senha varchar(256),
 fkAvaliacao int,
 foreign key (fkAvaliacao) references avaliacao (idAvaliacao)
 );
-
 
 create table aviso (
 id int auto_increment,
@@ -48,4 +52,9 @@ foreign key (fk_usuario) references usuario(id)
         FROM aviso a
             INNER JOIN usuario u
                 ON a.fk_usuario = u.id order by idUsuario = ;
-                
+			
+select count(usuario.id) as 'votacao' ,avaliacao.nota, count(usuario.fkAvaliacao) as 'total' from usuario join avaliacao on avaliacao.idAvaliacao = usuario.fkAvaliacao
+group by usuario.fkAvaliacao;
+
+
+

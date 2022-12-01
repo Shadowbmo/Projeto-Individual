@@ -52,7 +52,7 @@
 
              
                 <li>
-                    <a href="#" >
+                    <a href="./jogos/PrimeiroJogo.html" >
                         <!-- Dark Mode -->
                         <span class="icone"><i class="uil uil-play"></i></span>
                     </a>
@@ -99,12 +99,12 @@
 <div class="containerJogos" id="jogos">
     <div class="container_inicial">
 
-        <img src="./assets/img/fotodoInicioTodoroki.gif">
-
+        <img src="./assets/img/inicial.gif">
+        
     </div>
     <div class="fraseJogo" id="fraseFeedback">
         <div class="frase">
-            Escolha um dos jogos, e dê um feedBack para nossa equipe :)
+             dê um feedBack para nossa equipe :)
             <div class="botao">
 
                 <li>
@@ -113,13 +113,18 @@
             </div>
         </div>
     </div>
-    <div class="container_inicial2">
-        <img src="./assets/img/fotoDoInicio.gif">
-    </div>
 
 </div>
+    <div class="teste">
 
-
+        <div class="botao">
+            <a href="./jogos/PrimeiroJogo.html">
+                <li>
+                    <button>Comece a jogar</button>
+                </li>
+            </a>
+        </div>
+    </div>
 
 <!-- **************************************************************************************** -->
 <!-- modal -->
@@ -187,31 +192,36 @@
             <!-- div titulo -->
             <div class="notas">
                     <div class="media">
-                        <span id="media"> 4,5</span>
-                        <span class="estrelas"> 
-                            Estrelas
+                        <span id="mediaTela"> 4,5</span>
+                        <span class="estrelas" id="estrelasTela"> 
+                            <img src="./assets/img/estrela_cinza.png" width="30px">
                         </span>
-                        <span id="total" class="total">3.000</span>
+                        <span id="totalVotos" class="total">3.000</span>
                     </div>
                     <div class="quantidadeNotas">
                             <span id="cinco" class="numero">
-                                5 <img src="./assets/img/barra100-removebg-preview.png">
+                                5 <img src="./assets/img/barra0-removebg-preview.png">
                             </span>
-                            <span class="numero">
-                                4 <img src="./assets/img/barra100-removebg-preview.png">
+                            <span id='quatro'class="numero">
+                                4 <img src="./assets/img/barra0-removebg-preview.png">
                             </span>
-                            <span class="numero">
-                                3 <img src="./assets/img/barra100-removebg-preview.png">
+                            <span class="numero" id="tres">
+                                3 <img src="./assets/img/barra0-removebg-preview.png">
                             </span>
-                            <span class="numero">
-                                2 <img src="./assets/img/barra100-removebg-preview.png">
+                            <span class="numero" id="dois">
+                                2 <img src="./assets/img/barra0-removebg-preview.png">
                             </span>
-                            <span class="numero">
-                                1 <img src="./assets/img/barra100-removebg-preview.png">
+                            <span class="numero" id="um">
+                                1 <img src="./assets/img/barra0-removebg-preview.png">
                             </span>
                     </div>
             </div>
 </div> 
+
+<div class="mural">
+
+  FeedBacks
+</div>
 <!-- Div analitics -->
 
 <!-- **************************************************************************************** -->
@@ -267,31 +277,14 @@
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-         var nota = 0
-        function nota1() {
-          nota = 1
-        }
-        function nota2() {
-          nota = 2
-        }
-        function nota3() {
-         nota = 3 
-        }
-        function nota4() {
-         nota = 4  
-        }
-        function nota5() {
-         nota = 5    
-        }
         
     function publicar() {
         var idUsuario = sessionStorage.ID_USUARIO;
+        publicarEstrelas()
 
         var corpo = {
             comentario: input_comentario.value,
             personagem: combo_personagem.value,
-            avaliacao: combo_estrelas.value
         }
 
         fetch(`/avisos/publicar/${idUsuario}`, {
@@ -306,7 +299,6 @@
 
             if (resposta.ok) {
                 window.location = "/perfil.html";
-                publicarEstrelas()
             //    limparFormulario();
                 //  finalizarAguardar();
             } else if (resposta.status == 404) {
@@ -334,7 +326,7 @@
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(corpo)
+            body: JSON.stringify(corpoEstrelas)
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
@@ -379,16 +371,390 @@
             console.log(`#ERRO: ${resposta}`);
         });
     }
+    var estrelaVotos = 0
+    var notaMedia = 0
     var tem_comentario = 0;
+    var estrela_completa = "<img src='./assets/img/estrela_amarela.png' />";
+    var estrela_vazia =         " <img src='./assets/img/estrela_cinza.png'>"
+    var meia_estrela = "<img src='./assets/img/meia_estrela.png' />";
+    var estrelasTotais =0;
+    function atualizarEstrelas() {
+        fetch("/avisos/atualizar").then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    for (let posicao = 0; posicao < resposta.length; posicao++) {
+                        var estrela = resposta[posicao]
+                        estrelasTotais += estrela.total
+                        notaMedia += (estrela.nota * estrela.votacao) 
+                    }
+                    totalVotos.innerHTML =  estrelasTotais
+
+                    for (let posicao = 0; posicao < resposta.length; posicao++) {
+                        var estrela = resposta[posicao];
+
+
+                        if (estrela.votacao / estrelasTotais * 100 < 10){
+                            if(estrela.nota == 5){
+                                cinco.innerHTML = `
+                                5 <img src="./assets/img/barra0-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 4){
+                                quatro.innerHTML = `
+                                4 <img src="./assets/img/barra0-removebg-preview.png">
+                                `
+                            } else if (estrela.nota == 3){
+                                tres.innerHTML = `
+                                3 <img src="./assets/img/barra0-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 2){
+                                dois.innerHTML = `
+                                2 <img src="./assets/img/barra0-removebg-preview.png">
+                                `
+                            } else {
+                                um.innerHTML = `
+                                1 <img src="./assets/img/barra0-removebg-preview.png">
+                                `
+                            }
+                        }else if (estrela.votacao / estrelasTotais * 100 < 20){
+                            if(estrela.nota == 5){
+                                cinco.innerHTML = `
+                                5 <img src="./assets/img/barra10-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 4){
+                                quatro.innerHTML = `
+                                4 <img src="./assets/img/barra10-removebg-preview.png">
+                                `
+                            } else if (estrela.nota == 3){
+                                tres.innerHTML = `
+                                3 <img src="./assets/img/barra10-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 2){
+                                dois.innerHTML = `
+                                2 <img src="./assets/img/barra10-removebg-preview.png">
+                                `
+                            } else {
+                                um.innerHTML = `
+                                1 <img src="./assets/img/barra10-removebg-preview.png">
+                                `
+                            }
+                        } else if (estrela.votacao / estrelasTotais * 100 < 30){
+                            if(estrela.nota == 5){
+                                cinco.innerHTML = `
+                                5 <img src="./assets/img/barra20-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 4){
+                                quatro.innerHTML = `
+                                4 <img src="./assets/img/barra20-removebg-preview.png">
+                                `
+                            } else if (estrela.nota == 3){
+                                tres.innerHTML = `
+                                3 <img src="./assets/img/barra20-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 2){
+                                dois.innerHTML = `
+                                2 <img src="./assets/img/barra20-removebg-preview.png">
+                                `
+                            } else {
+                                um.innerHTML = `
+                                1 <img src="./assets/img/barra20-removebg-preview.png">
+                                `
+                            }
+
+                        } else if (estrela.votacao / estrelasTotais * 100 < 40){
+                            if(estrela.nota == 5){
+                                cinco.innerHTML = `
+                                5 <img src="./assets/img/barra30-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 4){
+                                quatro.innerHTML = `
+                                4 <img src="./assets/img/barra30-removebg-preview.png">
+                                `
+                            } else if (estrela.nota == 3){
+                                tres.innerHTML = `
+                                3 <img src="./assets/img/barra30-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 2){
+                                dois.innerHTML = `
+                                2 <img src="./assets/img/barra30-removebg-preview.png">
+                                `
+                            } else {
+                                um.innerHTML = `
+                                1 <img src="./assets/img/barra30-removebg-preview.png">
+                                `
+                            }
+                        } else if (estrela.votacao / estrelasTotais  * 100 < 50){
+                            if(estrela.nota == 5){
+                                cinco.innerHTML = `
+                                5 <img src="./assets/img/barra40-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 4){
+                                quatro.innerHTML = `
+                                4 <img src="./assets/img/barra40-removebg-preview.png">
+                                `
+                            } else if (estrela.nota == 3){
+                                tres.innerHTML = `
+                                3 <img src="./assets/img/barra40-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 2){
+                                dois.innerHTML = `
+                                2 <img src="./assets/img/barra40-removebg-preview.png">
+                                `
+                            } else {
+                                um.innerHTML = `
+                                1 <img src="./assets/img/barra40-removebg-preview.png">
+                                `
+                            }
+                        }else if (estrela.votacao / estrelasTotais * 100 < 60) {
+                            if(estrela.nota == 5){
+                                cinco.innerHTML = `
+                                5 <img src="./assets/img/barra50-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 4){
+                                quatro.innerHTML = `
+                                4 <img src="./assets/img/barra50-removebg-preview.png">
+                                `
+                            } else if (estrela.nota == 3){
+                                tres.innerHTML = `
+                                3 <img src="./assets/img/barra50-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 2){
+                                dois.innerHTML = `
+                                2 <img src="./assets/img/barra50-removebg-preview.png">
+                                `
+                            } else {
+                                um.innerHTML = `
+                                1 <img src="./assets/img/barra50-removebg-preview.png">
+                                `
+                            }
+                        } else if(estrela.votacao / estrelasTotais * 100 < 70){
+                            if(estrela.nota == 5){
+                                cinco.innerHTML = `
+                                5 <img src="./assets/img/barra60-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 4){
+                                quatro.innerHTML = `
+                                4 <img src="./assets/img/barra60-removebg-preview.png">
+                                `
+                            } else if (estrela.nota == 3){
+                                tres.innerHTML = `
+                                3 <img src="./assets/img/barra60-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 2){
+                                dois.innerHTML = `
+                                2 <img src="./assets/img/barra60-removebg-preview.png">
+                                `
+                            } else {
+                                um.innerHTML = `
+                                1 <img src="./assets/img/barra60-removebg-preview.png">
+                                `
+                            }
+
+                        }else if(estrela.votacao / estrelasTotais * 100 < 80){
+                            if(estrela.nota == 5){
+                                cinco.innerHTML = `
+                                5 <img src="./assets/img/barra70-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 4){
+                                quatro.innerHTML = `
+                                4 <img src="./assets/img/barra70-removebg-preview.png">
+                                `
+                            } else if (estrela.nota == 3){
+                                tres.innerHTML = `
+                                3 <img src="./assets/img/barra70-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 2){
+                                dois.innerHTML = `
+                                2 <img src="./assets/img/barra70-removebg-preview.png">
+                                `
+                            } else {
+                                um.innerHTML = `
+                                1 <img src="./assets/img/barra70-removebg-preview.png">
+                                `
+                            }
+                        }else if(estrela.votacao / estrelasTotais * 100 < 90){
+                            if(estrela.nota == 5){
+                                cinco.innerHTML = `
+                                5 <img src="./assets/img/barra80-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 4){
+                                quatro.innerHTML = `
+                                4 <img src="./assets/img/barra80-removebg-preview.png">
+                                `
+                            } else if (estrela.nota == 3){
+                                tres.innerHTML = `
+                                3 <img src="./assets/img/barra80-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 2){
+                                dois.innerHTML = `
+                                2 <img src="./assets/img/barra80-removebg-preview.png">
+                                `
+                            } else {
+                                um.innerHTML = `
+                                1 <img src="./assets/img/barra80-removebg-preview.png">
+                                `
+                            }
+                        }else if(estrela.votacao / estrelasTotais * 100 < 100){
+                            if(estrela.nota == 5){
+                                cinco.innerHTML = `
+                                5 <img src="./assets/img/barra90-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 4){
+                                quatro.innerHTML = `
+                                4 <img src="./assets/img/barra90-removebg-preview.png">
+                                `
+                            } else if (estrela.nota == 3){
+                                tres.innerHTML = `
+                                3 <img src="./assets/img/barra90-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 2){
+                                dois.innerHTML = `
+                                2 <img src="./assets/img/barra90-removebg-preview.png">
+                                `
+                            } else {
+                                um.innerHTML = `
+                                1 <img src="./assets/img/barra90-removebg-preview.png">
+                                `
+                            }
+                        } else {
+                            if(estrela.nota == 5){
+                                cinco.innerHTML = `
+                                5 <img src="./assets/img/barra100-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 4){
+                                quatro.innerHTML = `
+                                4 <img src="./assets/img/barra100-removebg-preview.png">
+                                `
+                            } else if (estrela.nota == 3){
+                                tres.innerHTML = `
+                                3 <img src="./assets/img/barra100-removebg-preview.png">
+                                `
+                            }else if (estrela.nota == 2){
+                                dois.innerHTML = `
+                                2 <img src="./assets/img/barra100-removebg-preview.png">
+                                `
+                            } else {
+                                um.innerHTML = `
+                                1 <img src="./assets/img/barra100-removebg-preview.png">
+                                `
+                            }
+                        }
+
+                        }
+                        var mediazinha = notaMedia / estrelasTotais
+                        mediaTela.innerHTML = mediazinha.toFixed (1) ;
+            
+         if (mediazinha < 0.5) {
+     estrelasTela.innerHTML = `
+                ${estrela_vazia}
+                ${estrela_vazia}
+                ${estrela_vazia}
+                ${estrela_vazia}
+                ${estrela_vazia}
+            `;
+    } else if (mediazinha < 1) {
+     estrelasTela.innerHTML = `
+            ${meia_estrela}
+            ${estrela_vazia}
+            ${estrela_vazia}
+            ${estrela_vazia}
+            ${estrela_vazia}
+        `;
+    } else if (mediazinha < 1.5) {
+     estrelasTela.innerHTML = `
+        ${estrela_completa}
+        ${estrela_vazia}
+        ${estrela_vazia}
+        ${estrela_vazia}
+        ${estrela_vazia}
+      `;
+    } else if (mediazinha < 2) {
+     estrelasTela.innerHTML = `
+        ${estrela_completa}
+        ${meia_estrela}
+        ${estrela_vazia}
+        ${estrela_vazia}
+        ${estrela_vazia}
+      `;
+    } else if (mediazinha < 2.5) {
+     estrelasTela.innerHTML = `
+        ${estrela_completa}
+        ${estrela_completa}
+        ${estrela_vazia}
+        ${estrela_vazia}
+        ${estrela_vazia}
+      `;
+    } else if (mediazinha < 3) {
+     estrelasTela.innerHTML = `
+      ${estrela_completa}
+      ${estrela_completa}
+      ${meia_estrela}
+      ${estrela_vazia}
+      ${estrela_vazia}
+      `;
+    } else if (mediazinha < 3.5) {
+     estrelasTela.innerHTML = `
+      ${estrela_completa}
+      ${estrela_completa}
+      ${estrela_completa}
+      ${estrela_vazia}
+      ${estrela_vazia}
+      `;
+    } else if (mediazinha < 4) {
+     estrelasTela.innerHTML = `
+      ${estrela_completa}
+      ${estrela_completa}
+      ${estrela_completa}
+      ${meia_estrela}
+      ${estrela_vazia}
+      `;
+    } else if (mediazinha < 4.5) {
+     estrelasTela.innerHTML = `
+      ${estrela_completa}
+      ${estrela_completa}
+      ${estrela_completa}
+      ${estrela_completa}
+      ${estrela_vazia}
+      `;
+    } else if (mediazinha < 5) {
+     estrelasTela.innerHTML = `
+      ${estrela_completa}
+      ${estrela_completa}
+      ${estrela_completa}
+      ${estrela_completa}
+      ${meia_estrela}
+      `;
+    } else {
+     estrelasTela.innerHTML = `
+      ${estrela_completa}
+      ${estrela_completa}
+      ${estrela_completa}
+      ${estrela_completa}
+      ${estrela_completa}
+      `;
+    }
+                
+            
+
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+    }
+
     function atualizarFeed() {
+        atualizarEstrelas()
+
         var idUsuario = sessionStorage.ID_USUARIO;
-        //aguardar();
         fetch(`/avisos/listar/${idUsuario}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     fraseFeedback.innerHTML = `
                     <div class="frase">
-                    Escolha um dos jogos, e dê um feedBack para nossa equipe :)
+                   dê um feedBack para nossa equipe :)
                     <div class="botao">
 
                         <li>
@@ -407,6 +773,9 @@
 
                     for (let posicao = 0; posicao < resposta.length; posicao++) {
                         var publicacao = resposta[posicao];
+
+
+
 
 
                         if (idUsuario == publicacao.fk_usuario) {
@@ -525,6 +894,7 @@
                             `
                         }
                     }
+                    
                     if (tem_comentario == 1) {
                         fraseFeedback.innerHTML = `
                             <div class="frase">
@@ -545,7 +915,7 @@
                     `
                     }
 
-
+                    
                     // finalizarAguardar();
                 });
             } else {
@@ -553,23 +923,8 @@
             }
         }).catch(function (resposta) {
             console.error(resposta);
-            //     finalizarAguardar();
         });
     }
 
-    // function testar() {
-    //       aguardar();
-
-    //     var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
-
-    //     var divResultado = document.getElementById("div_feed");
-
-    //     divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
-    //     divResultado.innerHTML = formulario.get("descricao");
-
-    //         finalizarAguardar();
-
-    //     return false;
-    // }
-
+    
 </script>

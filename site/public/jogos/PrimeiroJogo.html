@@ -14,6 +14,13 @@
 
         <img src="./img/fogoTodoroki-unscreen.gif" class="fogo">
         <img src="./img/toga-correndo-AdobeExpress-unscreen.gif" class="toga" id="toga">
+        <img src="./img/todorokizinho-unscreen.gif" class="todoroki">
+    </div>
+
+    <div class="pontuacao">
+        <span>
+            score: <span id="score"> </span>
+        </span>
     </div>
 </body>
 </html>
@@ -28,12 +35,13 @@
 
 
 <script>
+    var scorezinho = 0
     const fogo = document.querySelector('.fogo')
     var togaviva = true;
     /* função pulo */
     function pulo() {
-        if(togaviva){
-
+        if(togaviva){  
+                scorezinho+=10
             toga.classList.add('pulo');
             toga.src = "./img/TogaPuloAnimacao.gif"
             toga.style.width = '150px'
@@ -43,6 +51,7 @@
                 toga.src="./img/toga-correndo-AdobeExpress-unscreen.gif" 
                 toga.style.width = '400px'
             }, 500);
+            score.innerHTML = scorezinho;
 
         }
         else {
@@ -81,7 +90,7 @@
             setTimeout(() => {
               pulo() 
             }, 300);            togaviva = false;
-        }
+        } 
     }, 10);
 
     /* Quando qualquer tecla prescionada ele ativa a função púlo */

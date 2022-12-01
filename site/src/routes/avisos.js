@@ -11,6 +11,10 @@ router.get("/listar/:idUsuario", function (req, res) {
     avisoController.listar(req, res);
 });
 
+router.get("/atualizar", function (req, res) {
+    avisoController.atualizar(req, res);
+});
+
 router.get("/listar/:idUsuario", function (req, res) {
     avisoController.listarPorUsuario(req, res);
 });

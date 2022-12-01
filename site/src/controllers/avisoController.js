@@ -20,6 +20,20 @@ function listar(req, res) {
         res.status(500).json(erro.sqlMessage);
     });
 }
+function atualizar(req, res) {
+    avisoModel.atualizar().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 
 function listarPorUsuario(req, res) {
     var idUsuario = req.params.idUsuario;
@@ -96,12 +110,12 @@ function publicarEstrelas(req, res) {
     var idUsuario = req.params.idUsuario;
     var avaliacao = req.body.avaliacao;
 
-    if (comentario == undefined) {
+    if (avaliacao == undefined) {
         res.status(400).send("A descrição está indefinido!");
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        avisoModel.publicar( idUsuario, avaliacao)
+        avisoModel.publicarEstrelas( idUsuario, avaliacao)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -157,6 +171,7 @@ function deletar(req, res) {
 module.exports = {
     testar,
     listar,
+    atualizar,
     listarPorUsuario,
     pesquisarDescricao,
     publicarEstrelas,

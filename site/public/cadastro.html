@@ -27,7 +27,7 @@
             </div>
         </div>
     </header>
-    <div class="container">
+    <div class="container"  id="containerLoading">
         <div class="content login">
 
             <div class="containerDireita">
@@ -59,6 +59,9 @@
                     <div class="botao">
                         <li><button onclick="entrar()">Logar</button></li>
                     </div>
+                    <span id="span_login">
+                    </span>
+        
                 </div>
             </div><!-- Container esquerda -->
         </div><!-- container login -->
@@ -84,38 +87,95 @@
                         <i class="far fa-user icones"></i>
                         <input placeholder="Nick" id="input_nick">
                     </div>
+                    <span id="span_validacao_nome">
+                    </span> 
 
                     <!-- EMAIL EMAIL EMAIL EMAIL EMAIL EMAIL EMAIL EMAIL EMAIL EMAIL EMAIL EMAIL EMAIL EMAIL EMAIL EMAIL  -->
                     <div class="inputs">
                         <i class="far fa-envelope icones"></i>
                         <input type="email" placeholder="Email" id="input_email">
                     </div>
+                    <span id="span_validacao_email">
+                    </span>
                     <!-- SENHA SENHA SENHA SENHA SENHA SENHA SENHA SENHA SENHA SENHA SENHA SENHA SENHA SENHA SENHA SENHA -->
                     <div class="inputs">
                         <i class="fas fa-lock icones"></i>
                         <input type="password" placeholder="Senha" id="input_senha">
                     </div>
+                    <span id="span_validacao_senha">
+                    </span>
 
                     <!-- CONFIRMA SENHA CONFIRMA SENHA CONFIRMA SENHA CONFIRMA SENHA CONFIRMA SENHA CONFIRMA SENHA CONFIRMA SENHA CONFIRMA SENHA  -->
                     <div class="inputs">
                         <i class="fas fa-lock icones"></i>
                         <input type="password" placeholder="Confirme a senha" id="confirmacao_senha_input">
                     </div>
+                    <span id="span_validacao_confirmacao_de_senha">
+                    </span>
 
                     <!-- BUTAO CADASTRAR BUTAO CADASTRAR BUTAO CADASTRAR BUTAO CADASTRAR BUTAO CADASTRAR -->
                     <div class="botaoCadastrar">
-                        <li><button onclick="cadastrar()">Cadastrar</button></li>
+                        <li><button onclick="validar()">Cadastrar</button></li>
                     </div>
                 </div> <!-- furmulario -->
             </div><!-- Esquerda -->
         </div><!-- container Registro-->
     </div>
+    <span id="aguardarLoading" class="aguardar" style="display: none;">
+        <img src="./assets/img/loading.gif">
+    </span>
 </body>
 
 </html>
 <script src="./js/cadastro.js"></script>
 
 <script>
+    var validarSessao = 0;
+     function validar() {
+        var nickVar = input_nick.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+        if (nickVar.length == '') {
+                span_validacao_nome.innerHTML = `  o campo 'nick' não pode ficar vazio
+    `
+            } else {
+                span_validacao_nome.innerHTML = ''
+                validarSessao += 1;
+            }
+    
+            if (emailVar.indexOf("@") > -1) {
+                span_validacao_email.innerHTML = ''
+                validarSessao += 1;
+            } else {
+                span_validacao_email.innerHTML = `                        digite um e-mail valido!
+`
+            }
+            if (senhaVar.length < 5) {
+                span_validacao_senha.innerHTML = `Senha fraca`
+            } else {
+                span_validacao_senha.innerHTML = ''
+                validarSessao += 1;
+            }
+    
+            if (confirmacaoSenhaVar != senhaVar) {
+                span_validacao_confirmacao_de_senha.innerHTML = `                        senha e confirmação de senha não coincidem
+`
+            } else {
+                span_validacao_confirmacao_de_senha.innerHTML = ''
+                validarSessao += 1;
+            }
+            if (confirmacaoSenhaVar == '') {
+                span_validacao_confirmacao_de_senha.innerHTML = "o campo 'Confirmação de senha não pode ficar vazio'"
+                validarSessao += 1;
+            }else {
+                span_validacao_confirmacao_de_senha.innerHTML = ''
+            }
+             if(validarSessao == 5 ){
+                cadastrar()
+             }
+    }
     function cadastrar() {
      //   aguardar();
 
@@ -127,14 +187,7 @@
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
         if (nickVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-
-        //    finalizarAguardar();
             return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
         }
 
         // Enviando o valor da nova input
@@ -155,13 +208,21 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-        //        cardErro.style.display = "block";
+                console.log(resposta);
+                aguardarLoading.style.display = 'flex';
+                containerLoading.style.display = 'none'
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
 
-          //      mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NICK_USUARIO = json.nick;
+                    sessionStorage.ID_USUARIO = json.id;
 
-                setTimeout(() => {
-                    window.location = "perfil.html";
-                }, 2000)
+                    setTimeout(function () {
+                        window.location = "perfil.html";
+               }, 3000); // apenas para exibir o loading
+                });
                 
                 limparFormulario();
         //        finalizarAguardar();
@@ -170,15 +231,11 @@
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-        //    finalizarAguardar();
         });
 
         return false;
     }
 
-    function sumirMensagem() {
-       // cardErro.style.display = "none"
-    }
 
 </script>
 
@@ -192,13 +249,8 @@
         var senhaVar = input_senha_login.value;
 
         if (emailVar == "" || senhaVar == "") {
-           // cardErro.style.display = "block"
-      //      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-    //        finalizarAguardar();
+            span_login.innerHTML = 'Essas credenciais não correspondem aos nossos registros.'
             return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -222,24 +274,26 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-
+                    aguardarLoading.style.display = 'flex';
+                containerLoading.style.display = 'none'
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NICK_USUARIO = json.nick;
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
                         window.location = "perfil.html";
-                    }, 1000); // apenas para exibir o loading
+                    }, 3000); // apenas para exibir o loading
 
                 });
 
             } else {
 
+                span_login.innerHTML = 'Essas credenciais não correspondem aos nossos registros.'
+
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                 //   finalizarAguardar(texto);
                 });
             }
 
@@ -250,8 +304,6 @@
         return false;
     }
 
-    function sumirMensagem() {
-     //   cardErro.style.display = "none"
-    }
-
+ 
+   
 </script>
